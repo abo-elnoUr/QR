@@ -1,0 +1,10 @@
+.form-control:focus:valid{
+  border: 1px solid var(--primary) !important;
+  box-shadow: 0 3px 10px 0 rgb(34 41 47 / 10%);
+}
+small{
+  color: red;
+}
+// .form-control.is-invalid:focus{
+
+// }

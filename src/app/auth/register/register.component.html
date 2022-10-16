@@ -1,0 +1,78 @@
+<div class="container-mine">
+  <div class="top"></div>
+  <div class="bottom"></div>
+  <div class="center">
+    <h3 class="mb-3">Register</h3>
+    <form [formGroup]="registerForm">
+      <div class="form-group">
+      <label>First Name</label>
+      <app-input
+        [control]="registerForm.get('firstName')"
+        [id]="'register-firstName'"
+        [class]="'form-control mb-2'"
+        [style]="'width: 300px'"
+        [type]="'text'"
+        [placeholder]="'enter first name'">
+      </app-input>
+      </div>
+      <div class="form-group">
+        <label>Last Name</label>
+        <app-input
+        [control]="registerForm.get('lastName')"
+        [id]="'register-lastName'"
+        [class]="'form-control mb-2'"
+        [style]="'width: 300px'"
+        [type]="'text'"
+        [placeholder]="'enter last name'">
+      </app-input>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <app-input
+        [control]="registerForm.get('email')"
+        [id]="'register-email'"
+        [class]="'form-control mb-2'"
+        [style]="'width: 300px'"
+        [type]="'email'"
+        [placeholder]="'enter email'">
+      </app-input>
+      </div>
+      <div class="form-group">
+        <label>Image</label>
+        <app-input
+        [control]="registerForm.get('image')"
+        [id]="'register-image'"
+        [class]="'form-control mb-2'"
+        [style]="'width: 300px'"
+        [type]="'file'"
+        [placeholder]="'enter image'">
+      </app-input>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <app-input
+        [control]="registerForm.get('password')"
+        [id]="'register-password'"
+        [class]="'form-control mb-2'"
+        [style]="'width: 300px'"
+        [type]="'password'"
+        [placeholder]="'*********'">
+      </app-input>
+      </div>
+      <div class="form-group">
+        <label>confirm Password</label>
+        <app-input
+        [control]="registerForm.get('confirmPassword')"
+        [id]="'register-confirmPassword'"
+        [class]="'form-control mb-2'"
+        [style]="'width: 300px'"
+        [type]="'password'"
+        [placeholder]="'*********'">
+      </app-input>
+      </div>
+    </form>
+    <div class="mx-auto text-center">
+      <button class="btn btn-outline-primary mt-2" (click)="onRegister()" >Register<i class="fa-solid fa-user-pen"></i></button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="container-mine">
+  <div class="top"></div>
+  <div class="bottom"></div>
+  <div class="center">
+    <h3 class="mb-3">Please Sign In</h3>
+    <form [formGroup]="loginForm">
+      <div class="form-group">
+        <label>Email</label>
+        <app-input
+        [control]="loginForm.get('email')"
+        [id]="'login-email'"
+        [class]="'form-control'"
+        [style]="'width: 300px'"
+        [type]="'email'"
+        [placeholder]="'enter email'">
+      </app-input>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <app-input
+        [control]="loginForm.get('password')"
+        [id]="'login-password'"
+        [class]="'form-control my-2'"
+        [type]="'password'"
+        [placeholder]="'********'">
+      </app-input>
+      </div>
+    </form>
+    <div class="mx-auto text-center">
+      <button class="btn btn-outline-primary mt-3" [disabled]="loginForm.invalid" (click)="onLogin()" >Login<i class="fa-solid fa-arrow-right-to-bracket ms-1"></i></button>
+    </div>
+  </div>
+</div>
