@@ -25,9 +25,9 @@
         [placeholder]="'********'">
       </app-input>
       </div>
+      <div class="mx-auto text-center">
+        <button class="btn btn-outline-primary mt-3" [disabled]="loginForm.invalid" (click)="onLogin()" >Login<i class="fa-solid fa-arrow-right-to-bracket ms-1"></i></button>
+      </div>
     </form>
-    <div class="mx-auto text-center">
-      <button class="btn btn-outline-primary mt-3" [disabled]="loginForm.invalid" (click)="onLogin()" >Login<i class="fa-solid fa-arrow-right-to-bracket ms-1"></i></button>
-    </div>
   </div>
 </div>

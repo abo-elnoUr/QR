@@ -6,7 +6,7 @@
   height: 100%;
   width: auto;
   padding-top: 2rem;
-  background-color: #fff;
+  background-color: rgb(255, 241, 241);
 }
 .app-sidebar {
   padding: 40px 16px;
@@ -28,12 +28,12 @@
     align-items: center;
 
     &:hover {
-      background-color: #c3cff4;
+      background-color: #999;
       color: #fff
     }
 
     &.active {
-      background-color: #1f1c2e;
+      background-color: #1da1f2;
       color: #fff
     }
   }
