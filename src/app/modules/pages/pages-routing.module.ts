@@ -7,18 +7,26 @@ import { HomeComponent } from './home/home.component';
 import { SettingComponent } from './setting/setting.component';
 
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   component: MainComponent,
+  //   children: [
+  //     { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  //     { path: 'setting', component: SettingComponent, canActivate: [AuthGuard] }
+  //   ],
+  // },
   {
     path: '',
     component: MainComponent,
     children: [
-      { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-      { path: 'setting', component: SettingComponent, canActivate: [AuthGuard] }
+      { path: 'home', component: HomeComponent },
+      { path: 'setting', component: SettingComponent }
     ],
-  },
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class PagesRoutingModule {}
+export class PagesRoutingModule { }

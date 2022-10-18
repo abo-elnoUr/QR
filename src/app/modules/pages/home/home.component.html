@@ -1,91 +1,172 @@
 <section class="main">
-  <div class="sub_main">
-    <div class="header">
-      <div class="d-flex">
-        <h1>Hello Groza</h1>
-      </div>
-      <p class="text-muted"><i class="fa-solid fa-angles-right me-1"></i>{{ myDate | date : 'MMMM d'  }}</p>
+    <div class="sub_main">
+        <div class="header">
+            <div class="d-flex">
+                <h1>Hello Groza</h1>
+            </div>
+            <p class="text-muted fs-5"><i class="fa-solid fa-angles-right me-1"></i>{{ myDate | date : 'MMMM d' }}</p>
+        </div>
+        <div class="sections_1">
+            <h2 class="pb-2 statistic">Statistics</h2>
+            <div class="row mx-2" style="gap: 20px;">
+                <div class="col  card_mine d-flex justify-content-between p-2 rounded mb-2">
+                    <div class="parent">
+                        <div class="title">
+                            <h3>mohamed<i class="fa-regular fa-circle-check ms-2 text-primary"></i></h3>
+                            <p class="text-muted my-1">front-end developer</p>
+                        </div>
+                        <div class="rate pb-1">
+                            <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
+                            <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
+                            <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
+                            <span><i class="fa-solid fa-minus text-secondary ms-1 fs-4"></i></span>
+                        </div>
+                    </div>
+                    <div class="statistics text-center ">
+                        <span class="text-success pb-4"><i class="fa-solid fa-arrow-trend-up"></i></span>
+                        <h4 class="text-success pt-2">$320</h4>
+                        <div class="text-muted">last 6 month</div>
+                    </div>
+                </div>
+                <div class="col  card_mine d-flex justify-content-between p-2 rounded mb-2">
+                    <div class="parent">
+                        <div class="title">
+                            <h3>mohamed<i class="fa-regular fa-circle-check ms-2 text-primary"></i></h3>
+                            <p class="text-muted my-1">front-end developer</p>
+                        </div>
+                        <div class="rate pb-1">
+                            <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
+                            <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
+                            <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
+                            <span><i class="fa-solid fa-minus text-secondary ms-1 fs-4"></i></span>
+                        </div>
+                    </div>
+                    <div class="statistics text-center ">
+                        <span class="text-success pb-4"><i class="fa-solid fa-arrow-trend-up"></i></span>
+                        <h4 class="text-success pt-2">$320</h4>
+                        <div class="text-muted">last 6 month</div>
+                    </div>
+                </div>
+                <div class="col  card_mine d-flex justify-content-between p-2 rounded mb-2">
+                    <div class="parent">
+                        <div class="title">
+                            <h3>mohamed<i class="fa-regular fa-circle-check ms-2 text-primary"></i></h3>
+                            <p class="text-muted my-1">front-end developer</p>
+                        </div>
+                        <div class="rate pb-1">
+                            <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
+                            <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
+                            <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
+                            <span><i class="fa-solid fa-minus text-secondary ms-1 fs-4"></i></span>
+                        </div>
+                    </div>
+                    <div class="statistics text-center ">
+                        <span class="text-success pb-4"><i class="fa-solid fa-arrow-trend-up"></i></span>
+                        <h4 class="text-success pt-2">$320</h4>
+                        <div class="text-muted">last 6 month</div>
+                    </div>
+                </div>
+                <div class="col card_mine d-flex justify-content-between p-2 rounded mb-2">
+                    <div class="parent">
+                        <div class="title">
+                            <h3>mohamed<i class="fa-regular fa-circle-check ms-2 text-primary"></i></h3>
+                            <p class="text-muted my-1">front-end developer</p>
+                        </div>
+                        <div class="rate pb-1">
+                            <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
+                            <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
+                            <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
+                            <span><i class="fa-solid fa-minus text-secondary ms-1 fs-4"></i></span>
+                        </div>
+                    </div>
+                    <div class="statistic text-center ">
+                        <span class="text-success pb-4"><i class="fa-solid fa-arrow-trend-up"></i></span>
+                        <h4 class="text-success pt-2">$320</h4>
+                        <div class="text-muted">last 6 month</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section_2">
+            <h2 class="py-2 activity">Activity</h2>
+            <div class="row d-flex justify-content-between my-2 rounded mb-2 mx-2" style="gap: 20px;">
+                <div class="col p-2 rounded mb-2 summary">
+                    <h3 class="mb-2">Owners Summary</h3>
+                    <div class="table-responsive">
+                        <table class="table table-hover table-borderless text-center ">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">First Name</th>
+                                    <th scope="col">Last Name</th>
+                                    <th scope="col">Vip</th>
+                                    <th scope="col">Phone</th>
+                                    <th scope="col" class="text-start">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="vertical-align: middle; cursor: pointer;">
+                                    <th scope="row">1</th>
+                                    <td>mohamed</td>
+                                    <td>aboelnour</td>
+                                    <td class="text-primary"><i class="fa-brands fa-gripfire"></i></td>
+                                    <td>01006438385</td>
+                                    <td class="text-success text-start"><i class="fa-solid fa-check me-1"></i>Activited</td>
+                                </tr>
+                                <tr style="vertical-align: middle; cursor: pointer;">
+                                    <th scope="row">2</th>
+                                    <td>groza</td>
+                                    <td>yellow</td>
+                                    <td class="text-secondary"><i class="fa-solid fa-heart-pulse"></i></td>
+                                    <td>01006438385</td>
+                                    <td class="text-danger text-start"><i class="fa-solid fa-xmark me-1"></i>DeActivited</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col p-2 rounded mb-2 topUser">
+                    <h3 class="mb-2">Top Users</h3>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex">
+                            <div class="image col-3">
+                                <img src="assets/images/dashboard/man.png" width="50">
+                            </div>
+                            <div class="info col-6">
+                                <h4>Yellow</h4>
+                                <p class="mb-0 text-muted">Account Mangement</p>
+                            </div>
+                            <div class="currency col-3">
+                                <h5 class="text-secondary">+$5.965</h5>
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex">
+                            <div class="image col-3">
+                                <img src="assets/images/dashboard/man.png" width="50">
+                            </div>
+                            <div class="info col-6">
+                                <h4>Yellow</h4>
+                                <p class="mb-0 text-muted">Account Mangement</p>
+                            </div>
+                            <div class="currency col-3">
+                                <h5 class="text-secondary">+$5.965</h5>
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex">
+                            <div class="image col-3">
+                                <img src="assets/images/dashboard/man.png" width="50">
+                            </div>
+                            <div class="info col-6">
+                                <h4>Yellow</h4>
+                                <p class="mb-0 text-muted">Account Mangement</p>
+                            </div>
+                            <div class="currency col-3" style="vertical-align: middle;">
+                                <h5 class="text-secondary">+$5.965</h5>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="sections">
-      <h2>Statistics</h2>
-      <div class="row mx-2" style="gap: 20px;">
-        <div class="col  card_mine d-flex justify-content-between p-2 rounded mb-2">
-          <div class="parent">
-            <div class="title">
-              <h3>mohamed<i class="fa-regular fa-circle-check ms-2 text-primary"></i></h3>
-              <p class="text-muted my-1">front-end developer</p>
-            </div>
-            <div class="rate pb-1">
-              <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
-              <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
-              <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
-              <span><i class="fa-solid fa-minus text-secondary ms-1 fs-4"></i></span>
-            </div>
-          </div>
-          <div class="statistic text-center ">
-            <span class="text-success pb-4"><i class="fa-solid fa-arrow-trend-up"></i></span>
-            <h4 class="text-success pt-2">$320</h4>
-            <div class="text-muted">last 6 month</div>
-          </div>
-        </div>
-        <div class="col  card_mine d-flex justify-content-between p-2 rounded mb-2">
-          <div class="parent">
-            <div class="title">
-              <h3>mohamed<i class="fa-regular fa-circle-check ms-2 text-primary"></i></h3>
-              <p class="text-muted my-1">front-end developer</p>
-            </div>
-            <div class="rate pb-1">
-              <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
-              <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
-              <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
-              <span><i class="fa-solid fa-minus text-secondary ms-1 fs-4"></i></span>
-            </div>
-          </div>
-          <div class="statistic text-center ">
-            <span class="text-success pb-4"><i class="fa-solid fa-arrow-trend-up"></i></span>
-            <h4 class="text-success pt-2">$320</h4>
-            <div class="text-muted">last 6 month</div>
-          </div>
-        </div>
-        <div class="col  card_mine d-flex justify-content-between p-2 rounded mb-2">
-          <div class="parent">
-            <div class="title">
-              <h3>mohamed<i class="fa-regular fa-circle-check ms-2 text-primary"></i></h3>
-              <p class="text-muted my-1">front-end developer</p>
-            </div>
-            <div class="rate pb-1">
-              <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
-              <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
-              <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
-              <span><i class="fa-solid fa-minus text-secondary ms-1 fs-4"></i></span>
-            </div>
-          </div>
-          <div class="statistic text-center ">
-            <span class="text-success pb-4"><i class="fa-solid fa-arrow-trend-up"></i></span>
-            <h4 class="text-success pt-2">$320</h4>
-            <div class="text-muted">last 6 month</div>
-          </div>
-        </div>
-        <div class="col  card_mine d-flex justify-content-between p-2 rounded mb-2">
-          <div class="parent">
-            <div class="title">
-              <h3>mohamed<i class="fa-regular fa-circle-check ms-2 text-primary"></i></h3>
-              <p class="text-muted my-1">front-end developer</p>
-            </div>
-            <div class="rate pb-1">
-              <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
-              <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
-              <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
-              <span><i class="fa-solid fa-minus text-secondary ms-1 fs-4"></i></span>
-            </div>
-          </div>
-          <div class="statistic text-center ">
-            <span class="text-success pb-4"><i class="fa-solid fa-arrow-trend-up"></i></span>
-            <h4 class="text-success pt-2">$320</h4>
-            <div class="text-muted">last 6 month</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
