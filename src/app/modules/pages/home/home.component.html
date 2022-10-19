@@ -2,7 +2,7 @@
     <div class="sub_main">
         <div class="header">
             <div class="d-flex">
-                <h1>Hello Groza</h1>
+                <h1>Hello {{ userName }}</h1>
             </div>
             <p class="text-muted fs-5"><i class="fa-solid fa-angles-right me-1"></i>{{ myDate | date : 'MMMM d' }}</p>
         </div>
@@ -127,14 +127,15 @@
                 </div>
                 <div class="col p-2 rounded mb-2 topUser">
                     <h3 class="mb-2">Top Users</h3>
-                    <ul class="list-group list-group-flush">
+                    <div class="scroll_content">
+                      <ul class="list-group list-group-flush ">
                         <li class="list-group-item d-flex">
                             <div class="image col-3">
                                 <img src="assets/images/dashboard/man.png" width="50">
                             </div>
                             <div class="info col-6">
                                 <h4>Yellow</h4>
-                                <p class="mb-0 text-muted">Account Mangement</p>
+                                <p class="mb-0 text-muted">Super Admin</p>
                             </div>
                             <div class="currency col-3">
                                 <h5 class="text-secondary">+$5.965</h5>
@@ -145,8 +146,8 @@
                                 <img src="assets/images/dashboard/man.png" width="50">
                             </div>
                             <div class="info col-6">
-                                <h4>Yellow</h4>
-                                <p class="mb-0 text-muted">Account Mangement</p>
+                                <h4>Groza</h4>
+                                <p class="mb-0 text-muted">User</p>
                             </div>
                             <div class="currency col-3">
                                 <h5 class="text-secondary">+$5.965</h5>
@@ -157,14 +158,16 @@
                                 <img src="assets/images/dashboard/man.png" width="50">
                             </div>
                             <div class="info col-6">
-                                <h4>Yellow</h4>
+                                <h4>mohamed</h4>
                                 <p class="mb-0 text-muted">Account Mangement</p>
                             </div>
                             <div class="currency col-3" style="vertical-align: middle;">
                                 <h5 class="text-secondary">+$5.965</h5>
                             </div>
                         </li>
+
                     </ul>
+                    </div>
                 </div>
             </div>
         </div>

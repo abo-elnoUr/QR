@@ -8,6 +8,9 @@ import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LayoutModule } from '../layout/layout.module';
 import { SettingComponent } from './setting/setting.component';
+import { ProfileComponent } from './profile/profile.component';
+import { InvititionComponent } from './invitition/invitition.component';
+import { AccountComponent } from './account/account.component';
 
 
 
@@ -17,7 +20,10 @@ import { SettingComponent } from './setting/setting.component';
   declarations: [
     HomeComponent,
     NotFoundComponent,
-    SettingComponent
+    SettingComponent,
+    ProfileComponent,
+    InvititionComponent,
+    AccountComponent
   ],
   imports: [
   CommonModule,

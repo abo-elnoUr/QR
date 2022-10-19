@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private _DatePipe: DatePipe) { }
 
+  userName = localStorage.getItem('loginUser')
   myDate: string;
 
   ngOnInit(): void {
