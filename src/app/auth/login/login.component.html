@@ -1,32 +1,32 @@
 <div class="container-mine">
   <div class="top"></div>
   <div class="bottom"></div>
-  <div class="center">
-    <h3 class="mb-3">Please Sign In</h3>
+  <div class="center text-end">
+    <h3 class="mb-3">برجاء تسجيل الدخول</h3>
     <form [formGroup]="loginForm">
       <div class="form-group">
-        <label>Email</label>
+        <label>الإيميل</label>
         <app-input
         [control]="loginForm.get('email')"
         [id]="'login-email'"
-        [class]="'form-control'"
+        [class]="'form-control text-end'"
         [style]="'width: 300px'"
         [type]="'email'"
-        [placeholder]="'enter email'">
+        [placeholder]="'ادخل الايميل'">
       </app-input>
       </div>
       <div class="form-group">
-        <label>Password</label>
+        <label>الرقم السري</label>
         <app-input
         [control]="loginForm.get('password')"
         [id]="'login-password'"
-        [class]="'form-control my-2'"
+        [class]="'form-control my-2 text-end'"
         [type]="'password'"
         [placeholder]="'********'">
       </app-input>
       </div>
       <div class="mx-auto text-center">
-        <button class="btn btn-outline-primary mt-3" [disabled]="loginForm.invalid" (click)="onLogin()" >Login<i class="fa-solid fa-arrow-right-to-bracket ms-1"></i></button>
+        <button class="btn btn-outline-primary mt-3" [disabled]="loginForm.invalid" (click)="onLogin()" ><i class="fa-solid fa-arrow-right-to-bracket me-1"></i>تسجيل الدخول</button>
       </div>
     </form>
   </div>

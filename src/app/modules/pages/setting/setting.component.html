@@ -1,1 +1,181 @@
-<p>setting works!</p>
+<section class="main">
+  <div class="sub_main">
+    <div class="d-flex justify-content-end">
+      <h1 class="sec_title pb-1">الإعدادات</h1>
+    </div>
+    <div class="text-start">
+      <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addUser"><i class="fa-solid fa-user-tie me-2"></i>إضافة مستخدم</button>
+    </div>
+    <div class="section_2 my-3 mx-2">
+      <div class="filter_search d-flex justify-content-between">
+        <div class="text-end">
+          <button class="btn btn-outline-info me-1"><i class="fa-solid
+              fa-filter"></i></button>
+          <button class="btn btn-outline-dark ms-1"><i class="fa-solid fa-code"></i></button>
+        </div>
+        <div class="search w-50">
+          <input type="search" class="form-control text-end" placeholder="إبحث هنا">
+        </div>
+
+      </div>
+    </div>
+    <div class="section_3 rounded">
+      <div class="table-responsive">
+        <table class="table table-hover table-borderless text-center caption-top text-end">
+          <caption class="me-4 text-end">قائمة المستخدمين <i class="fa-solid fa-users ms-2"></i></caption>
+          <thead>
+            <tr>
+              <th scope="col">العمليات</th>
+              <th scope="col">العنوان</th>
+              <th scope="col">إسم المستخدم</th>
+              <th scope="col">الهاتف</th>
+              <th scope="col">الإسم</th>
+              <th scope="col">#</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="vertical-align: middle; cursor: pointer;">
+              <td>
+                <button class="btn me-1 border-0">
+                  <img src="assets/images/main/delete.png" width="30">
+                </button>
+                <button class="btn me-1 border-0">
+                  <img src="assets/images/main/edit.png" width="30">
+                </button>
+              </td>
+              <td data-bs-toggle="modal" data-bs-target="#openInvition">
+                الاسكندرية
+              </td>
+              <td data-bs-toggle="modal" data-bs-target="#openInvition"
+              class="text-primary">groza</td>
+              <td data-bs-toggle="modal" data-bs-target="#openInvition">01006438385</td>
+              <td data-bs-toggle="modal" data-bs-target="#openInvition">أصفر</td>
+              <th data-bs-toggle="modal" data-bs-target="#openInvition"
+                scope="row" data-bs-toggle="modal" data-bs-target="#openInvition">1</th>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+
+  </div>
+</section>
+
+<!-- view invition modal -->
+
+<div class="modal fade" id="addUser" tabindex="-1"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">إضافة</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"
+          aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-end">
+        <h3 class="mb-1 text-center">إضافة مستخدم</h3>
+        <form [formGroup]="registerForm">
+          <div class="form-group">
+          <label>الاسم الاول</label>
+          <app-input
+            [control]="registerForm.get('firstName')"
+            [id]="'register-firstName'"
+            [class]="'form-control mb-2 text-end'"
+
+            [type]="'text'"
+            [placeholder]="'ادخل الاسم الاول'">
+          </app-input>
+          </div>
+          <div class="form-group">
+            <label>الاسم الثاني</label>
+            <app-input
+            [control]="registerForm.get('lastName')"
+            [id]="'register-lastName'"
+            [class]="'form-control mb-2 text-end'"
+
+            [type]="'text'"
+            [placeholder]="'ادخل الاسم الثاني'">
+          </app-input>
+          </div>
+          <div class="form-group">
+            <label>اسم المستخدم</label>
+            <app-input
+            [control]="registerForm.get('userName')"
+            [id]="'register-userName'"
+            [class]="'form-control mb-2 text-end'"
+
+            [type]="'text'"
+            [placeholder]="'ادخل اسم المستخدم'">
+          </app-input>
+          </div>
+          <div class="form-group">
+            <label>الهاتف</label>
+            <app-input
+            [control]="registerForm.get('phone')"
+            [id]="'register-phone'"
+            [class]="'form-control mb-2 text-end'"
+
+            [type]="'number'"
+            [placeholder]="'ادخل الهاتف'">
+          </app-input>
+          </div>
+          <div class="form-group">
+            <label>العنوان</label>
+            <app-input
+            [control]="registerForm.get('address')"
+            [id]="'register-address'"
+            [class]="'form-control mb-2 text-end'"
+
+            [type]="'text'"
+            [placeholder]="'ادخل العنوان'">
+          </app-input>
+          </div>
+          <div class="form-group">
+            <label>الايميل</label>
+            <app-input
+            [control]="registerForm.get('email')"
+            [id]="'register-email'"
+            [class]="'form-control mb-2 text-end'"
+
+            [type]="'email'"
+            [placeholder]="'ادخل الايميل'">
+          </app-input>
+          </div>
+          <div class="form-group">
+            <label>الرقم السري</label>
+            <app-input
+            [control]="registerForm.get('password')"
+            [id]="'register-password'"
+            [class]="'form-control mb-2 text-end'"
+
+            [type]="'password'"
+            [placeholder]="'*********'">
+          </app-input>
+          </div>
+          <div class="form-group">
+            <label>تأكيد الرقم السري</label>
+            <app-input
+            [control]="registerForm.get('confirmPassword')"
+            [id]="'register-confirmPassword'"
+            [class]="'form-control mb-2 text-end'"
+
+            [type]="'password'"
+            [placeholder]="'*********'">
+          </app-input>
+          </div>
+          <div class="mx-auto text-center">
+            <button class="btn btn-outline-primary mt-2" (click)="onRegister()" ><i class="fa-solid fa-user-pen me-1"></i>إنشاء مستخدم</button>
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger "
+          data-bs-dismiss="modal">اغلاق</button>
+      </div>
+    </div>
+  </div>
+</div>

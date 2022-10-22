@@ -1,82 +1,122 @@
 <section class="main">
   <div class="sub_main">
-    <div class="d-flex">
-      <h1 class="sec_title">Invitions</h1>
+    <div class="d-flex justify-content-end">
+      <h1 class="sec_title pb-1"> الحجوزات</h1>
     </div>
 
     <div class="section_2 my-3 mx-2">
       <div class="filter_search d-flex justify-content-between">
-        <div class="search w-50">
-          <input type="search" class="form-control" placeholder="Search Here">
-        </div>
         <div class="text-end">
           <button class="btn btn-outline-info me-1"><i class="fa-solid
               fa-filter"></i></button>
           <button class="btn btn-outline-dark ms-1"><i class="fa-solid fa-code"></i></button>
         </div>
+        <div class="search w-50">
+          <input type="search" class="form-control text-end" placeholder="إبحث هنا">
+        </div>
       </div>
     </div>
     <div class="section_3 rounded">
       <div class="table-responsive">
-        <table class="table table-hover table-borderless text-center ">
+        <table class="table table-hover table-borderless text-center text-end">
           <thead>
             <tr>
+              <th scope="col">الحالة</th>
+              <th scope="col">رقم الوحدة</th>
+              <th scope="col">رقم البطاقة الشخصية</th>
+              <th scope="col">الهاتف</th>
+              <th scope="col">الإسم</th>
               <th scope="col">#</th>
-              <th scope="col">Name</th>
-              <th scope="col">Phone</th>
-              <th scope="col">Card Id</th>
-              <th scope="col">Unit Number</th>
-              <th scope="col">Opreation</th>
             </tr>
           </thead>
           <tbody>
             <tr style="vertical-align: middle; cursor: pointer;">
-              <th data-bs-toggle="modal" data-bs-target="#openInvition"
-                scope="row">1</th>
-              <td data-bs-toggle="modal" data-bs-target="#openInvition">mohamed</td>
-              <td data-bs-toggle="modal" data-bs-target="#openInvition">01006438385</td>
-              <td data-bs-toggle="modal" data-bs-target="#openInvition"
-                class="text-primary">52369850215475</td>
+              <td>
+                <button class="btn me-1 border-0">
+                  <img src="assets/images/invitaions/like.png" width="30">
+                </button>
+              </td>
               <td data-bs-toggle="modal" data-bs-target="#openInvition">
                 D4
               </td>
-              <td>
-                <button class="btn me-1 border-0">
-                  <img src="assets/images/main/delete.png" width="30">
-                </button>
-              </td>
+              <td data-bs-toggle="modal" data-bs-target="#openInvition"
+              class="text-primary">52369850215475</td>
+              <td data-bs-toggle="modal" data-bs-target="#openInvition">01006438385</td>
+              <td data-bs-toggle="modal" data-bs-target="#openInvition">محمد</td>
+              <th data-bs-toggle="modal" data-bs-target="#openInvition"
+              scope="row" data-bs-toggle="modal" data-bs-target="#openInvition">1</th>
             </tr>
             <tr style="vertical-align: middle; cursor: pointer;">
-              <th scope="row">1</th>
-              <td>mohamed</td>
-              <td>01006438385</td>
-              <td class="text-primary">52369850215475</td>
-              <td data-bs-toggle="modal" data-bs-target="#openInvition">
-                R96
-              </td>
               <td>
                 <button class="btn me-1 border-0">
-                  <img src="assets/images/main/delete.png" width="30">
+                  <img src="assets/images/invitaions/dislike.png" width="30">
                 </button>
               </td>
-            </tr>
-            <tr style="vertical-align: middle; cursor: pointer;">
-              <th scope="row">3</th>
-              <td>mohamed</td>
-              <td>01006438385</td>
-              <td class="text-primary">52369850215475</td>
               <td data-bs-toggle="modal" data-bs-target="#openInvition">
-                G45
+                D-76
               </td>
-              <td>
-                <button class="btn me-1 border-0">
-                  <img src="assets/images/main/delete.png" width="30">
-                </button>
-              </td>
+              <td data-bs-toggle="modal" data-bs-target="#openInvition"
+              class="text-primary">52369850215475</td>
+              <td data-bs-toggle="modal" data-bs-target="#openInvition">01006438385</td>
+              <td data-bs-toggle="modal" data-bs-target="#openInvition">أصفر</td>
+              <th data-bs-toggle="modal" data-bs-target="#openInvition"
+              scope="row" data-bs-toggle="modal" data-bs-target="#openInvition">2</th>
             </tr>
+
           </tbody>
         </table>
       </div>
     </div>
   </div>
 </section>
+
+<!-- view invition modal -->
+
+<div class="modal fade" id="openInvition" tabindex="-1"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">عرض الدعوة</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"
+          aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-end">
+        <div class="invite shadow rounded p-2">
+          <div class="client">
+            <h4 class="mt-1">معلومات المالك<img src="assets/images/invitaions/key.png" class="ms-1" width="20"></h4>
+            <div class="d-flex flex-column mx-2">
+              <label class="ms-1"><span class="text-muted">moahmed</span> : الأسم</label>
+              <label class="ms-1"><span class="text-muted">test@google.com</span> : الإيميل</label>
+              <label class="ms-1"><span class="text-muted">0123456789</span> : الهاتف</label>
+              <label class="ms-1"><span class="text-muted">A 12</span>: رقم الوحدة </label>
+            </div>
+
+          </div>
+          <div class="visitor">
+            <h4 class="mt-1">معلومات الزائر<img src="assets/images/invitaions/visitor.png" class="ms-1" class="me-1" width="20"></h4>
+            <div class="d-flex flex-column mx-2">
+              <label class="ms-1"><span class="text-muted">ahmed</span> : الأسم</label>
+              <label class="ms-1"><span class="text-muted">0123456789</span> : الهاتف</label>
+              <label class="ms-1"> <span
+                  class="text-muted">625 432 102 15467</span> : رقم البطاقة الشخصية</label>
+            </div>
+
+          </div>
+          <div class="visit_info">
+            <h4 class="mt-1">معلومات الزيارة<img src="assets/images/invitaions/invitation.png" class="ms-1" class="me-1" width="20"></h4>
+            <div class="d-flex flex-column mx-2">
+              <label class="ms-1"><span class="text-muted">2022-10-10</span> : تبدأ في</label>
+              <label class="ms-1"><span class="text-muted">2022-10-25</span> : تنتهي عند</label>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger"
+          data-bs-dismiss="modal">اغلاق</button>
+      </div>
+    </div>
+  </div>
+</div>

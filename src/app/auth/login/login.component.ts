@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
   onLogin(){
     this._AuthService.login(this.loginForm.value).subscribe({
       next: (login) => {
-        this._ToastrService.success('login succesfully 💛')
+        this._ToastrService.success('💛 تم تسجيل الدخول بنجاح ')
         this._AuthService.isLogin = true
         localStorage.setItem('token', login.token)
         localStorage.setItem('idUser', login.id)

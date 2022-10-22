@@ -1,12 +1,13 @@
 .main{
   position: fixed;
-  left: 0;
+  right: 0;
   top: 0;
   margin-top: 20px;
   height: 100%;
   width: auto;
   padding-top: 2rem;
   background-color: rgb(255, 241, 241);
+  z-index: 99;
 }
 .app-sidebar {
   padding: 40px 16px;

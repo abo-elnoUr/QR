@@ -1,125 +1,83 @@
 <section class="main">
   <div class="sub_main">
-    <div class="d-flex">
-      <h1 class="sec_title">Accounts</h1>
+    <div class="d-flex justify-content-end">
+      <h1 class="sec_title pb-2">طلبات التسجيل</h1>
     </div>
     <div class="section_1 mt-5">
       <div class="row mx-2" style="gap: 20px;">
         <div class="col card_mine d-flex p-2 rounded mb-2">
-          <div class="title mx-auto text-secondary" style="vertical-align:
+          <div class="title mx-auto text-danger" style="vertical-align:
             middle;">
-            <h3 class="">Pending</h3>
-            <p class="text-center fs-4 mb-0">14</p>
+            <h3 class="">مرفوض</h3>
+            <p class="text-center fs-4 mb-0">3</p>
           </div>
         </div>
         <div class="col card_mine d-flex p-2 rounded mb-2">
           <div class="title mx-auto text-success" style="vertical-align:
             middle;">
-            <h3 class="">Approve</h3>
+            <h3 class="">مقبول</h3>
             <p class="text-center fs-4 mb-0">8</p>
           </div>
         </div>
         <div class="col card_mine d-flex p-2 rounded mb-2">
-          <div class="title mx-auto text-danger" style="vertical-align:
+          <div class="title mx-auto text-secondary" style="vertical-align:
             middle;">
-            <h3 class="">Reject</h3>
-            <p class="text-center fs-4 mb-0">3</p>
+            <h3 class="">معلق</h3>
+            <p class="text-center fs-4 mb-0">14</p>
           </div>
         </div>
       </div>
     </div>
     <div class="section_2 my-3 mx-2">
       <div class="filter_search d-flex justify-content-between">
-        <div class="search w-50">
-          <input type="search" class="form-control" placeholder="Search Here">
-        </div>
         <div class="text-end">
           <button class="btn btn-outline-info me-1"><i class="fa-solid
               fa-filter"></i></button>
           <button class="btn btn-outline-dark ms-1"><i class="fa-solid fa-code"></i></button>
         </div>
+        <div class="search w-50">
+          <input type="search" class="form-control text-end" placeholder="إبحث هنا">
+        </div>
+
       </div>
     </div>
     <div class="section_3 rounded">
       <div class="table-responsive">
-        <table class="table table-hover table-borderless text-center ">
+        <table class="table table-hover table-borderless text-center text-end">
           <thead>
             <tr>
+              <th scope="col">عمليات</th>
+              <th scope="col">الحالة</th>
+              <th scope="col">الايميل</th>
+              <th scope="col">الهاتف</th>
+              <th scope="col">الإسم</th>
               <th scope="col">#</th>
-              <th scope="col">Name</th>
-              <th scope="col">Phone</th>
-              <th scope="col">Email</th>
-              <th scope="col">Status</th>
-              <th scope="col">Opreation</th>
             </tr>
           </thead>
           <tbody>
             <tr style="vertical-align: middle; cursor: pointer;">
-              <th data-bs-toggle="modal" data-bs-target="#openInvition"
-                scope="row">1</th>
-              <td data-bs-toggle="modal" data-bs-target="#openInvition">mohamed</td>
-              <td data-bs-toggle="modal" data-bs-target="#openInvition">01006438385</td>
-              <td data-bs-toggle="modal" data-bs-target="#openInvition"
-                class="text-primary">test@google.com</td>
-              <td data-bs-toggle="modal" data-bs-target="#openInvition"
-                class="text-success">
-                <div class="d-flex justify-content-center">
-                  <div>
-                    <i class="fa-solid fa-check me-1"></i>Activited
-                  </div>
-                  <div class="form-check form-switch ms-1">
-                    <input class="form-check-input" type="checkbox" checked>
-                  </div>
-                </div>
-              </td>
               <td>
                 <button class="btn me-1 border-0">
                   <img src="assets/images/main/delete.png" width="30">
                 </button>
               </td>
-            </tr>
-            <tr style="vertical-align: middle; cursor: pointer;">
+              <td
+              class="text-success">
+              <div class="d-flex justify-content-center">
+                <div>
+                  <i class="fa-solid fa-check me-1"></i>مفعل
+                </div>
+                <div class="form-check form-switch ms-1">
+                  <input class="form-check-input" type="checkbox" checked>
+                </div>
+              </div>
+            </td>
+            <td class="text-primary">test@google.com</td>
+            <td >01006438385</td>
+            <td >جروزا</td>
               <th scope="row">1</th>
-              <td>mohamed</td>
-              <td>01006438385</td>
-              <td class="text-primary">test@google.com</td>
-              <td class="text-success">
-                <div class="d-flex justify-content-center">
-                  <div>
-                    <i class="fa-solid fa-check me-1"></i>Activited
-                  </div>
-                  <div class="form-check form-switch ms-1">
-                    <input class="form-check-input" type="checkbox" checked>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <button class="btn me-1 border-0">
-                  <img src="assets/images/main/delete.png" width="30">
-                </button>
-              </td>
             </tr>
-            <tr style="vertical-align: middle; cursor: pointer;">
-              <th scope="row">3</th>
-              <td>mohamed</td>
-              <td>01006438385</td>
-              <td class="text-primary">test@google.com</td>
-              <td class="text-danger">
-                <div class="d-flex justify-content-center">
-                  <div>
-                    <i class="fa-solid fa-xmark me-1"></i>DeActivited
-                  </div>
-                  <div class="form-check form-switch ms-1">
-                    <input class="form-check-input" type="checkbox">
-                  </div>
-                </div>
-              </td>
-              <td>
-                <button class="btn me-1 border-0">
-                  <img src="assets/images/main/delete.png" width="30">
-                </button>
-              </td>
-            </tr>
+
           </tbody>
         </table>
       </div>
@@ -127,53 +85,3 @@
   </div>
 </section>
 
-<!-- view invition modal -->
-
-<div class="modal fade" id="openInvition" tabindex="-1"
-  aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">View Invititon</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"
-          aria-label="Close"></button>
-      </div>
-      <div class="modal-body ">
-        <div class="invite shadow rounded p-2">
-          <div class="client">
-            <h4 ><img src="assets/images/invitaions/key.png" width="20"> Owner Info</h4>
-            <div class="d-flex flex-column mx-2">
-              <label class="me-1">Name : <span class="text-muted">moahmed</span></label>
-              <label class="me-1">Email : <span class="text-muted">test@google.com</span></label>
-              <label class="me-1">Mobile : <span class="text-muted">0123456789</span></label>
-              <label class="me-1">Unit Number : <span class="text-muted">A 12</span></label>
-            </div>
-
-          </div>
-          <div class="visitor">
-            <h4 ><img src="assets/images/invitaions/visitor.png" class="me-1" width="20">Visitor Info</h4>
-            <div class="d-flex flex-column mx-2">
-              <label class="me-1">Name : <span class="text-muted">ahmed</span></label>
-              <label class="me-1">Mobile : <span class="text-muted">0123456789</span></label>
-              <label class="me-1">Personal Card Number : <span
-                  class="text-muted">625 432 102 15467</span></label>
-            </div>
-
-          </div>
-          <div class="visit_info">
-            <h4 ><img src="assets/images/invitaions/invitation.png" class="me-1" width="20">Visit Info</h4>
-            <div class="d-flex flex-column mx-2">
-              <label class="me-1">Start From : <span class="text-muted">2022-10-10</span></label>
-              <label class="me-1">End At : <span class="text-muted">2022-10-25</span></label>
-            </div>
-
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-danger"
-          data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>

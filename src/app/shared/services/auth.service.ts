@@ -22,7 +22,7 @@ export class AuthService {
   }
 
   // user login
-  register(register: User) :Observable<User>{
+  register(register: any) :Observable<User>{
     return this._HttpClient.post<User>(this.apiUrl + 'Auth/Register', register)
   }
 
