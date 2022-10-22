@@ -9,20 +9,21 @@ import { User } from './../models/user';
 })
 export class AuthService {
 
-  apiUrl = 'https://localhost:44347/api/'
+  // apiUrl = 'https://localhost:44347/api/'
+  apiUrl = 'https://localhost:5001/api/'
   isLogin: boolean = false
 
-  constructor(private _HttpClient:HttpClient) { }
+  constructor(private _HttpClient: HttpClient) { }
 
   // ************************************ Users ************************************
 
   // user login
-  login(login: User) :Observable<User>{
+  login(login: User): Observable<User> {
     return this._HttpClient.post<User>(this.apiUrl + 'Auth/Login', login)
   }
 
   // user login
-  register(register: any) :Observable<User>{
+  register(register: any): Observable<User> {
     return this._HttpClient.post<User>(this.apiUrl + 'Auth/Register', register)
   }
 
