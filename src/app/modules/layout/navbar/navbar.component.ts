@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { ThemeService } from 'src/app/shared/services/theme.service';
+import { ThemeService } from '../../theme/theme.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit {
   token = localStorage.getItem('token')
   loginUser = localStorage.getItem('loginUser')
 
-  constructor(public _AuthService: AuthService, private _Router: Router, private _ThemeService: ThemeService) { }
+  constructor(public _AuthService: AuthService,private _ThemeService: ThemeService,  private _Router: Router) { }
 
   ngOnInit(): void {
     if (this.token) {
@@ -24,11 +24,12 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  public switchTheme(): void {
-    if (this._ThemeService.current === 'light') {
-      this._ThemeService.current = 'dark';
+  switchTheme(){
+    if (this._ThemeService.isDarkTheme()) {
+      this._ThemeService.setLightTheme();
+
     } else {
-      this._ThemeService.current = 'light';
+      this._ThemeService.setDarkTheme();
     }
   }
 

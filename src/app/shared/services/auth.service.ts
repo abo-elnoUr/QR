@@ -9,8 +9,8 @@ import { User } from './../models/user';
 })
 export class AuthService {
 
-  // apiUrl = 'https://localhost:44347/api/'
-  apiUrl = 'https://localhost:5001/api/'
+  apiUrl = 'https://localhost:44347/api/'
+  // apiUrl = 'https://localhost:5001/api/'
   isLogin: boolean = false
 
   constructor(private _HttpClient: HttpClient) { }

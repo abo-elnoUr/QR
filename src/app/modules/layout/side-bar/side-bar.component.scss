@@ -6,8 +6,8 @@
   height: 100%;
   width: auto;
   padding-top: 2rem;
-  background-color: rgb(255, 241, 241);
-  z-index: 99;
+  background-color: var(--app-container);
+  // z-index: 9;
 }
 .app-sidebar {
   padding: 40px 16px;
@@ -29,13 +29,13 @@
     align-items: center;
 
     &:hover {
-      background-color: #999;
-      color: #fff
+      background-color: var(--link-color-hover);
+      color: var(--link-color-active);
     }
 
     &.active {
-      background-color: #1da1f2;
-      color: #fff
+      background-color: var(--link-color-active-bg);
+      color: var(--link-color-active);
     }
   }
 }

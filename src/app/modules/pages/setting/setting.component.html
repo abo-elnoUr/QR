@@ -77,46 +77,46 @@
                 <form [formGroup]="addUserForm">
                     <div class="form-group">
                         <label>الاسم الاول</label>
-                        <app-input [control]="addUserForm.get('firstName')" [id]="'register-firstName'" [class]="'form-control mb-2 text-end'" [type]="'text'" [placeholder]="'ادخل الاسم الاول'">
+                        <app-input [control]="addUserForm.get('firstName')" [id]="'add-firstName'" [class]="'form-control mb-2 text-end'" [type]="'text'" [placeholder]="'ادخل الاسم الاول'">
                         </app-input>
                     </div>
                     <div class="form-group">
                         <label>الاسم الثاني</label>
-                        <app-input [control]="addUserForm.get('lastName')" [id]="'register-lastName'" [class]="'form-control mb-2 text-end'" [type]="'text'" [placeholder]="'ادخل الاسم الثاني'">
+                        <app-input [control]="addUserForm.get('lastName')" [id]="'add-lastName'" [class]="'form-control mb-2 text-end'" [type]="'text'" [placeholder]="'ادخل الاسم الثاني'">
                         </app-input>
                     </div>
                     <div class="form-group">
                         <label>اسم المستخدم</label>
-                        <app-input [control]="addUserForm.get('userName')" [id]="'register-userName'" [class]="'form-control mb-2 text-end'" [type]="'text'" [placeholder]="'ادخل اسم المستخدم'">
+                        <app-input [control]="addUserForm.get('userName')" [id]="'add-userName'" [class]="'form-control mb-2 text-end'" [type]="'text'" [placeholder]="'ادخل اسم المستخدم'">
                         </app-input>
                     </div>
                     <div class="form-group">
                         <label>الهاتف</label>
-                        <app-input [control]="addUserForm.get('phone')" [id]="'register-phone'" [class]="'form-control mb-2 text-end'" [type]="'number'" [placeholder]="'ادخل الهاتف'">
+                        <app-input [control]="addUserForm.get('phone')" [id]="'add-phone'" [class]="'form-control mb-2 text-end'" [type]="'number'" [placeholder]="'ادخل الهاتف'">
                         </app-input>
                     </div>
                     <div class="form-group">
                         <label>العنوان</label>
-                        <app-input [control]="addUserForm.get('address')" [id]="'register-address'" [class]="'form-control mb-2 text-end'" [type]="'text'" [placeholder]="'ادخل العنوان'">
+                        <app-input [control]="addUserForm.get('address')" [id]="'add-address'" [class]="'form-control mb-2 text-end'" [type]="'text'" [placeholder]="'ادخل العنوان'">
                         </app-input>
                     </div>
                     <div class="form-group">
                         <label>الايميل</label>
-                        <app-input [control]="addUserForm.get('email')" [id]="'register-email'" [class]="'form-control mb-2 text-end'" [type]="'email'" [placeholder]="'ادخل الايميل'">
+                        <app-input [control]="addUserForm.get('email')" [id]="'add-email'" [class]="'form-control mb-2 text-end'" [type]="'email'" [placeholder]="'ادخل الايميل'">
                         </app-input>
                     </div>
                     <div class="form-group">
                         <label>الرقم السري</label>
-                        <app-input [control]="addUserForm.get('password')" [id]="'register-password'" [class]="'form-control mb-2 text-end'" [type]="'password'" [placeholder]="'*********'">
+                        <app-input [control]="addUserForm.get('password')" [id]="'add-password'" [class]="'form-control mb-2 text-end'" [type]="'password'" [placeholder]="'*********'">
                         </app-input>
                     </div>
                     <div class="form-group">
                         <label>تأكيد الرقم السري</label>
-                        <app-input [control]="addUserForm.get('confirmPassword')" [id]="'register-confirmPassword'" [class]="'form-control mb-2 text-end'" [type]="'password'" [placeholder]="'*********'">
+                        <app-input [control]="addUserForm.get('confirmPassword')" [id]="'add-confirmPassword'" [class]="'form-control mb-2 text-end'" [type]="'password'" [placeholder]="'*********'">
                         </app-input>
                     </div>
                     <div class="mx-auto text-center">
-                        <button class="btn btn-outline-primary mt-2" (click)="onRegister()"><i
+                        <button class="btn btn-outline-primary mt-2" (click)="addUser()"><i
                 class="fa-solid fa-user-pen me-1"></i>إنشاء مستخدم</button>
                     </div>
                 </form>
@@ -143,46 +143,46 @@
                 <form [formGroup]="editUserForm">
                     <div class="form-group">
                         <label>الاسم الاول</label>
-                        <app-input [control]="editUserForm.get('firstName')" [id]="'register-firstName'" [class]="'form-control mb-2 text-end'" [type]="'text'" [placeholder]="'ادخل الاسم الاول'">
+                        <app-input [control]="editUserForm.get('firstName')" [id]="'edit-firstName'" [class]="'form-control mb-2 text-end'" [type]="'text'" [placeholder]="'ادخل الاسم الاول'">
                         </app-input>
                     </div>
                     <div class="form-group">
                         <label>الاسم الثاني</label>
-                        <app-input [control]="editUserForm.get('lastName')" [id]="'register-lastName'" [class]="'form-control mb-2 text-end'" [type]="'text'" [placeholder]="'ادخل الاسم الثاني'">
+                        <app-input [control]="editUserForm.get('lastName')" [id]="'edit-lastName'" [class]="'form-control mb-2 text-end'" [type]="'text'" [placeholder]="'ادخل الاسم الثاني'">
                         </app-input>
                     </div>
                     <div class="form-group">
                         <label>اسم المستخدم</label>
-                        <app-input [control]="editUserForm.get('userName')" [id]="'register-userName'" [class]="'form-control mb-2 text-end'" [type]="'text'" [placeholder]="'ادخل اسم المستخدم'">
+                        <app-input [control]="editUserForm.get('userName')" [id]="'edit-userName'" [class]="'form-control mb-2 text-end'" [type]="'text'" [placeholder]="'ادخل اسم المستخدم'">
                         </app-input>
                     </div>
                     <div class="form-group">
                         <label>الهاتف</label>
-                        <app-input [control]="editUserForm.get('phone')" [id]="'register-phone'" [class]="'form-control mb-2 text-end'" [type]="'number'" [placeholder]="'ادخل الهاتف'">
+                        <app-input [control]="editUserForm.get('phone')" [id]="'edit-phone'" [class]="'form-control mb-2 text-end'" [type]="'number'" [placeholder]="'ادخل الهاتف'">
                         </app-input>
                     </div>
                     <div class="form-group">
                         <label>العنوان</label>
-                        <app-input [control]="editUserForm.get('address')" [id]="'register-address'" [class]="'form-control mb-2 text-end'" [type]="'text'" [placeholder]="'ادخل العنوان'">
+                        <app-input [control]="editUserForm.get('address')" [id]="'edit-address'" [class]="'form-control mb-2 text-end'" [type]="'text'" [placeholder]="'ادخل العنوان'">
                         </app-input>
                     </div>
                     <div class="form-group">
                         <label>الايميل</label>
-                        <app-input [control]="editUserForm.get('email')" [id]="'register-email'" [class]="'form-control mb-2 text-end'" [type]="'email'" [placeholder]="'ادخل الايميل'">
+                        <app-input [control]="editUserForm.get('email')" [id]="'edit-email'" [class]="'form-control mb-2 text-end'" [type]="'email'" [placeholder]="'ادخل الايميل'">
                         </app-input>
                     </div>
                     <div class="form-group">
                         <label>الرقم السري</label>
-                        <app-input [control]="editUserForm.get('password')" [id]="'register-password'" [class]="'form-control mb-2 text-end'" [type]="'password'" [placeholder]="'*********'">
+                        <app-input [control]="editUserForm.get('password')" [id]="'edit-password'" [class]="'form-control mb-2 text-end'" [type]="'password'" [placeholder]="'*********'">
                         </app-input>
                     </div>
                     <div class="form-group">
                         <label>تأكيد الرقم السري</label>
-                        <app-input [control]="editUserForm.get('confirmPassword')" [id]="'register-confirmPassword'" [class]="'form-control mb-2 text-end'" [type]="'password'" [placeholder]="'*********'">
+                        <app-input [control]="editUserForm.get('confirmPassword')" [id]="'edit-confirmPassword'" [class]="'form-control mb-2 text-end'" [type]="'password'" [placeholder]="'*********'">
                         </app-input>
                     </div>
                     <div class="mx-auto text-center">
-                        <button class="btn btn-outline-info mt-2" (click)="onRegister()"><i
+                        <button class="btn btn-outline-info mt-2" (click)="editUser()"><i
                 class="fa-regular fa-pen-to-square me-1"></i>تعديل مستخدم</button>
                     </div>
                 </form>

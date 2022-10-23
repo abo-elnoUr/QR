@@ -87,7 +87,7 @@ export class SettingComponent implements OnInit {
     })
   }
 
-  onRegister() {
+  addUser() {
     this.addUserForm.get('type').setValue('user')
     const createForm = new FormData()
     createForm.append('firstName', this.addUserForm.get('firstName').value)
