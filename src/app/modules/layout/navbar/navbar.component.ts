@@ -11,8 +11,8 @@ import { ThemeService } from '../../theme/theme.service';
 })
 export class NavbarComponent implements OnInit {
 
-  token = localStorage.getItem('token')
-  loginUser = localStorage.getItem('loginUser')
+  token = localStorage.getItem('qrToken')
+  loginUser = localStorage.getItem('qrLoginUser')
 
   constructor(public _AuthService: AuthService,private _ThemeService: ThemeService,  private _Router: Router) { }
 
@@ -35,10 +35,10 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     this._AuthService.isLogin = false
-    localStorage.removeItem('token')
-    localStorage.removeItem('idUser')
-    localStorage.removeItem('loginUser')
-    localStorage.removeItem('role')
+    localStorage.removeItem('qrToken')
+    localStorage.removeItem('qrIdUser')
+    localStorage.removeItem('qrLoginUser')
+    localStorage.removeItem('qrRole')
     this._Router.navigate(['/login'])
   }
 

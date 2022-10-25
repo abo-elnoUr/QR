@@ -26,6 +26,7 @@ import { AuthModule } from './auth/auth.module';
       tapToDismiss: true,
       preventDuplicates: true
     })
+
   ],
   providers: [],
   bootstrap: [AppComponent]

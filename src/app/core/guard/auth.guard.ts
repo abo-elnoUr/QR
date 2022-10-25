@@ -12,9 +12,9 @@ export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean  {
-      let token = localStorage.getItem('token')
+      let token = localStorage.getItem('qrToken')
       if (!token) {
-        this._Router.navigate(['login'])
+        this._Router.navigate(['/login'])
         this._ToastrService.error('you must login first 😀')
         return false
       }

@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { Unit } from 'src/app/shared/models/unit';
 
 @Component({
   selector: 'app-setting',
@@ -12,13 +13,25 @@ import { Router } from '@angular/router';
 })
 export class SettingComponent implements OnInit {
 
-  addUserForm: FormGroup
-  editUserForm: FormGroup
+  addUserForm: FormGroup;
+  editUserForm: FormGroup;
+  addUnitForm: FormGroup;
+  editUnitForm: FormGroup;
+  units: Unit[] = []
+  id: any = null
+  p: number = 1;
+  total: any = 0
 
   constructor(private _AuthService: AuthService, private _FormBuilder: FormBuilder, private _ToastrService: ToastrService, private _Router: Router) { }
 
 
   ngOnInit(): void {
+
+    // call functions
+    this.getUnits()
+
+    // forms init
+
     this.addUserForm = this._FormBuilder.group({
       email: ['', [
         Validators.required,
@@ -85,6 +98,30 @@ export class SettingComponent implements OnInit {
         Validators.required,
       ]]
     })
+    this.addUnitForm = this._FormBuilder.group({
+      name: ['', [
+        Validators.required,
+      ]],
+      phone: ['', [
+        Validators.required,
+        Validators.minLength(9)
+      ]]
+    })
+    this.editUnitForm = this._FormBuilder.group({
+      name: ['', [
+        Validators.required,
+      ]],
+      phone: ['', [
+        Validators.required,
+        Validators.minLength(9)
+      ]]
+    })
+  }
+
+  // pagination
+  pageChanged(num: any) {
+    this.p = num
+    this.getUnits()
   }
 
   addUser() {
@@ -99,14 +136,12 @@ export class SettingComponent implements OnInit {
     createForm.append('phone', this.addUserForm.get('phone').value)
     createForm.append('userName', this.addUserForm.get('userName').value)
     createForm.append('type', this.addUserForm.get('type').value)
-    this._AuthService.register(createForm).subscribe({
+    this._AuthService.addUser(createForm).subscribe({
       next: (register) => {
         this._ToastrService.success('💛 تم تسجيل مستخدم جديد  ')
         this.addUserForm.reset()
       },
       error: (error) => {
-        console.log(error);
-
         switch (error.status) {
           case 500:
             this._ToastrService.error(error.error.errors as string);
@@ -130,6 +165,72 @@ export class SettingComponent implements OnInit {
 
   // edit user
   editUser() {
+
+  }
+
+  // delete user
+  deleteUser(id: string){
+
+  }
+
+  // ************************* owners ****************************
+
+  // add unit
+  addUnit(){
+    this._AuthService.addUnit(this.addUnitForm.value).subscribe({
+      next: (added) => {
+        this._ToastrService.success('unit added 💛')
+        this.addUnitForm.reset()
+        this.getUnits()
+      },
+      error: (error) => {
+        switch (error.status) {
+          case 500:
+            this._ToastrService.error(error.error.errors as string);
+            break
+          case 401:
+            for (const [key, value] of Object.entries(error.error.errors)) {
+              this._ToastrService.error(value as string);
+            }
+            break
+          case 400:
+            for (const [key, value] of Object.entries(error.error.errors)) {
+              this._ToastrService.error(value as string);
+            }
+            break
+        }
+      }
+    })
+  }
+
+  // get all units
+  getUnits(){
+    this._AuthService.getUnits().subscribe({
+      next: (units) => {
+        this.units = units
+      },
+      error: (error) => {
+        switch (error.status) {
+          case 500:
+            this._ToastrService.error(error.error.errors as string);
+            break
+          case 401:
+            for (const [key, value] of Object.entries(error.error.errors)) {
+              this._ToastrService.error(value as string);
+            }
+            break
+          case 400:
+            for (const [key, value] of Object.entries(error.error.errors)) {
+              this._ToastrService.error(value as string);
+            }
+            break
+        }
+      }
+    })
+  }
+
+  // edit unit
+  editUnit(){
 
   }
 

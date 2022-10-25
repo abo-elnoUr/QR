@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginComponent implements OnInit {
 
-  token = localStorage.getItem('token')
+  token = localStorage.getItem('qrToken')
   loginForm: FormGroup
 
   constructor(private _AuthService: AuthService, private _FormBuilder: FormBuilder, private _Router: Router, private _ToastrService: ToastrService) {
@@ -41,10 +41,10 @@ export class LoginComponent implements OnInit {
       next: (login) => {
         this._ToastrService.success('💛 تم تسجيل الدخول بنجاح ')
         this._AuthService.isLogin = true
-        localStorage.setItem('token', login.token)
-        localStorage.setItem('idUser', login.id)
-        localStorage.setItem('loginUser', login.name)
-        localStorage.setItem('role', login.type)
+        localStorage.setItem('qrToken', login.token)
+        localStorage.setItem('qrIdUser', login.id)
+        localStorage.setItem('qrLoginUser', login.name)
+        localStorage.setItem('qrRole', login.type)
         this._Router.navigate(['/dashboard/home'])
         this.loginForm.reset()
       },
