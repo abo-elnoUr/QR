@@ -15,7 +15,7 @@ export class AuthGuard implements CanActivate {
       let token = localStorage.getItem('qrToken')
       if (!token) {
         this._Router.navigate(['/login'])
-        this._ToastrService.error('you must login first 😀')
+        this._ToastrService.error('🤪 متسجل دخول الأول')
         return false
       }
       return true;

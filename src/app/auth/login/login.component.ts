@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
 
   token = localStorage.getItem('qrToken')
   loginForm: FormGroup
+  forgetForm: FormGroup
 
   constructor(private _AuthService: AuthService, private _FormBuilder: FormBuilder, private _Router: Router, private _ToastrService: ToastrService) {
     if (this.token) {
@@ -34,7 +35,16 @@ export class LoginComponent implements OnInit {
         Validators.minLength(6)
       ]]
     })
+
+    this.forgetForm = this._FormBuilder.group({
+      email: ['', [
+        Validators.required,
+        Validators.email
+      ]],
+    })
   }
+
+  // login
 
   onLogin(){
     this._AuthService.login(this.loginForm.value).subscribe({
@@ -47,6 +57,36 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('qrRole', login.type)
         this._Router.navigate(['/dashboard/home'])
         this.loginForm.reset()
+      },
+      error: (error) => {
+        switch (error.status) {
+          case 500:
+            this._ToastrService.error(error.error.message as string);
+            break
+          case 401:
+            for (const [key, value] of Object.entries(error.error.message)) {
+              this._ToastrService.error(value as string);
+            }
+            break
+          case 400:
+            for (const [key, value] of Object.entries(error.error.message)) {
+              this._ToastrService.error(value as string);
+            }
+            break
+        }
+      }
+    })
+  }
+
+  // forget password
+  forgetPassword(){
+    this._AuthService.forgetPassword(this.forgetForm.value).subscribe({
+      next: (send) => {
+        this._ToastrService.success(' 😊 تم ارسال الايميل يرجي مراجعة البريد')
+        this.forgetForm.reset()
+        localStorage.setItem('forgetToken', send.token)
+        localStorage.setItem('forgetEmail', send.email)
+        this._Router.navigate(['/resetPassword'])
       },
       error: (error) => {
         switch (error.status) {

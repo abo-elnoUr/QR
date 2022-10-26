@@ -2,7 +2,7 @@
   <div class="top"></div>
   <div class="bottom"></div>
   <div class="center text-end">
-    <h3 class="mb-3">برجاء تسجيل الدخول</h3>
+    <h3 class="mb-3"> 😎 سجل دخول اباشا</h3>
     <form [formGroup]="loginForm">
       <div class="form-group">
         <label>الإيميل</label>
@@ -25,9 +25,51 @@
         [placeholder]="'********'">
       </app-input>
       </div>
+      <div class="text-end">
+        <a routerLink="" data-bs-toggle="modal" data-bs-target="#forgetPassword" >هل نسيت الرقم السري</a>
+      </div>
       <div class="mx-auto text-center">
         <button class="btn btn-outline-primary mt-3" [disabled]="loginForm.invalid" (click)="onLogin()" ><i class="fa-solid fa-arrow-right-to-bracket me-1"></i>تسجيل الدخول</button>
       </div>
     </form>
   </div>
 </div>
+
+
+
+
+<!-- forget password Modal -->
+<div class="modal fade" id="forgetPassword" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close ms-0" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title" id="exampleModalLabel">ارسال </h5>
+      </div>
+      <div class="modal-body text-end">
+        <h3 class="mb-3 text-center"> ارسال ايميل </h3>
+    <form [formGroup]="forgetForm">
+      <div class="form-group">
+        <label>الإيميل</label>
+        <app-input
+        [control]="forgetForm.get('email')"
+        [id]="'forget-email'"
+        [class]="'form-control text-end'"
+        [type]="'email'"
+        [placeholder]="'ادخل الايميل'">
+      </app-input>
+      </div>
+
+      <div class="mx-auto text-center">
+        <button class="btn btn-outline-primary mt-3" [disabled]="forgetForm.invalid" (click)="forgetPassword()"><i class="fa-regular fa-paper-plane me-1"></i>إرسال</button>
+      </div>
+    </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">إغلاق</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

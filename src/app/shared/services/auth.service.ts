@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { User } from './../models/user';
-import { Owner } from './../models/owner';
-import { Unit } from '../models/unit';
+
 
 @Injectable({
   providedIn: 'root'
@@ -17,35 +16,24 @@ export class AuthService {
 
   constructor(private _HttpClient: HttpClient) { }
 
-  // ************************************ Users ************************************
 
-  // user login
+  // ************************************ lgoin ************************************
+
+  // login
   login(login: User): Observable<User> {
     return this._HttpClient.post<User>(this.apiUrl + 'Auth/Login', login)
   }
 
-  // create user
-  addUser(register: any): Observable<User> {
-    return this._HttpClient.post<User>(this.apiUrl + 'Auth/Register', register)
+  // forget password
+  forgetPassword(email: string): Observable<any>{
+    return this._HttpClient.post(this.apiUrl + 'Auth/ForgetPassword', email)
   }
 
-  // ************************************ Owners ************************************
-
-  // get all owners
-  getOwners(): Observable<Owner[]>{
-    return this._HttpClient.get<Owner[]>(this.apiUrl + 'Auth/GetOwners')
+  // reset password
+  resetPassword(forget: any): Observable<any>{
+    return this._HttpClient.post(this.apiUrl + 'Auth/ResetPassword', forget)
   }
 
-  // ************************************ Owners ************************************
 
-  // add unit
-  addUnit(unit: Unit): Observable<Unit>{
-    return this._HttpClient.post<Unit>(this.apiUrl + 'Unit/Create', unit)
-  }
-
-  // get all units
-  getUnits(): Observable<Unit[]>{
-    return this._HttpClient.get<Unit[]>(this.apiUrl + 'Unit/GetAll')
-  }
 
 }

@@ -24,6 +24,7 @@ import { AccountComponent } from './account/account.component';
     ProfileComponent,
     InvititionComponent,
     AccountComponent
+
   ],
   imports: [
   CommonModule,

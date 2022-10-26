@@ -21,14 +21,13 @@
                 fa-code"></i></button>
           </div>
           <div class="search w-50">
-            <input type="search" class="form-control text-end" placeholder="إبحث
-              هنا">
+            <input type="search" class="form-control text-end" placeholder="إبحث هنا">
           </div>
 
         </div>
       </div>
       <div class="section_3 rounded">
-        <div class="table-responsive">
+        <div class="table-responsive" style="min-height: 300px;">
           <table class="table table-hover table-borderless text-center
             caption-top text-end">
             <caption class="me-4 text-end">قائمة المستخدمين <i class="fa-solid
@@ -36,6 +35,7 @@
             <thead>
               <tr>
                 <th scope="col">العمليات</th>
+                <th scope="col">الإيميل</th>
                 <th scope="col">العنوان</th>
                 <th scope="col">إسم المستخدم</th>
                 <th scope="col">الهاتف</th>
@@ -44,7 +44,10 @@
               </tr>
             </thead>
             <tbody>
-              <tr style="vertical-align: middle; cursor: pointer;">
+              <tr *ngFor="let user of users | paginate: { id: 'usersPagination',
+              itemsPerPage: 5,
+              currentPage: p,
+              totalItems: total }; let i= index " style="vertical-align: middle; cursor: pointer;">
                 <td>
                   <button class="btn me-1 border-0">
                     <img src="assets/images/main/delete.png" width="30">
@@ -54,18 +57,28 @@
                     <img src="assets/images/main/edit.png" width="30">
                   </button>
                 </td>
+                <td>{{ user.email }}</td>
                 <td>
-                  الاسكندرية
+                  {{ user.address }}
                 </td>
-                <td class="text-primary">groza</td>
-                <td>01006438385</td>
-                <td>أصفر</td>
+                <td class="text-primary">{{ user.userName }}</td>
+                <td>{{ user.phone }}</td>
+                <td>{{ user.firstName + ' ' + user.lastName }}</td>
                 <th scope="row">1</th>
               </tr>
 
             </tbody>
           </table>
         </div>
+        <!-- pagination -->
+<div class="mx-auto text-center my-3">
+  <pagination-controls id="usersPagination"
+    (pageChange)="pageChanged($event)"
+    (pageBoundsCorrection)="pageChanged($event)" [maxSize]="9"
+    [directionLinks]="true" [autoHide]="true" [responsive]="true"
+    previousLabel="Previous" nextLabel="Next">
+  </pagination-controls>
+</div>
       </div>
     </div>
     <div class="owners">

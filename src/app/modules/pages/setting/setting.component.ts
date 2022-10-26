@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { UserService } from 'src/app/shared/services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { Unit } from 'src/app/shared/models/unit';
+import { User } from './../../../shared/models/user';
 
 @Component({
   selector: 'app-setting',
@@ -18,17 +20,20 @@ export class SettingComponent implements OnInit {
   addUnitForm: FormGroup;
   editUnitForm: FormGroup;
   units: Unit[] = []
+  users: User[] = []
   id: any = null
   p: number = 1;
   total: any = 0
 
-  constructor(private _AuthService: AuthService, private _FormBuilder: FormBuilder, private _ToastrService: ToastrService, private _Router: Router) { }
+  constructor(private _AuthService: AuthService, private _UserService: UserService, private _FormBuilder: FormBuilder, private _ToastrService: ToastrService, private _Router: Router) { }
 
 
   ngOnInit(): void {
 
     // call functions
     this.getUnits()
+    this.getUsers()
+
 
     // forms init
 
@@ -124,6 +129,34 @@ export class SettingComponent implements OnInit {
     this.getUnits()
   }
 
+   // ************************* Users ****************************
+
+  //  get all users
+  getUsers(){
+    this._UserService.getUsers().subscribe({
+      next: (users) => {
+        this.users = users
+      },
+      error: (error) => {
+        switch (error.status) {
+          case 500:
+            this._ToastrService.error(error.error.errors as string);
+            break
+          case 401:
+            for (const [key, value] of Object.entries(error.error.errors)) {
+              this._ToastrService.error(value as string);
+            }
+            break
+          case 400:
+            for (const [key, value] of Object.entries(error.error.errors)) {
+              this._ToastrService.error(value as string);
+            }
+            break
+        }
+      }
+    })
+  }
+
   addUser() {
     this.addUserForm.get('type').setValue('user')
     const createForm = new FormData()
@@ -136,7 +169,7 @@ export class SettingComponent implements OnInit {
     createForm.append('phone', this.addUserForm.get('phone').value)
     createForm.append('userName', this.addUserForm.get('userName').value)
     createForm.append('type', this.addUserForm.get('type').value)
-    this._AuthService.addUser(createForm).subscribe({
+    this._UserService.addUser(createForm).subscribe({
       next: (register) => {
         this._ToastrService.success('💛 تم تسجيل مستخدم جديد  ')
         this.addUserForm.reset()
@@ -177,7 +210,7 @@ export class SettingComponent implements OnInit {
 
   // add unit
   addUnit(){
-    this._AuthService.addUnit(this.addUnitForm.value).subscribe({
+    this._UserService.addUnit(this.addUnitForm.value).subscribe({
       next: (added) => {
         this._ToastrService.success('unit added 💛')
         this.addUnitForm.reset()
@@ -205,7 +238,7 @@ export class SettingComponent implements OnInit {
 
   // get all units
   getUnits(){
-    this._AuthService.getUnits().subscribe({
+    this._UserService.getUnits().subscribe({
       next: (units) => {
         this.units = units
       },
