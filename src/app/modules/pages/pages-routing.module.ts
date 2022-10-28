@@ -9,20 +9,31 @@ import { ProfileComponent } from './profile/profile.component';
 import { InvititionComponent } from './invitition/invitition.component';
 import { AccountComponent } from './account/account.component';
 
+// const routes: Routes = [
+//   {
+//     path: '',
+//     component: MainComponent,
+//     children: [
+//       { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+//       { path: 'setting', component: SettingComponent, canActivate: [AuthGuard] },
+//       { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+//       { path: 'invitition', component: InvititionComponent, canActivate: [AuthGuard] },
+//       { path: 'account', component: AccountComponent, canActivate: [AuthGuard] }
+//     ],
+//   },
+// ];
 const routes: Routes = [
   {
     path: '',
     component: MainComponent,
     children: [
-      { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-      { path: 'setting', component: SettingComponent, canActivate: [AuthGuard] },
-      { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-      { path: 'invitition', component: InvititionComponent, canActivate: [AuthGuard] },
-      { path: 'account', component: AccountComponent, canActivate: [AuthGuard] }
+      { path: 'home', component: HomeComponent },
+      { path: 'setting', component: SettingComponent },
+      { path: 'profile', component: ProfileComponent },
+      { path: 'invitition', component: InvititionComponent },
+      { path: 'account', component: AccountComponent }
     ],
   },
-
-
 ];
 
 @NgModule({

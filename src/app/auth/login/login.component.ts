@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     if (this.token) {
       this._Router.navigate(['/dashboard/home'])
     }
-   }
+  }
 
 
 
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
 
   // login
 
-  onLogin(){
+  onLogin() {
     this._AuthService.login(this.loginForm.value).subscribe({
       next: (login) => {
         this._ToastrService.success('💛 تم تسجيل الدخول بنجاح ')
@@ -79,10 +79,10 @@ export class LoginComponent implements OnInit {
   }
 
   // forget password
-  forgetPassword(){
+  forgetPassword() {
     this._AuthService.forgetPassword(this.forgetForm.value).subscribe({
       next: (send) => {
-        this._ToastrService.success(' 😊 تم ارسال الايميل يرجي مراجعة البريد')
+        this._ToastrService.success(' 😊 تم ارسال الرمز يرجي مراجعة البريد')
         this.forgetForm.reset()
         localStorage.setItem('forgetToken', send.token)
         localStorage.setItem('forgetEmail', send.email)
@@ -107,6 +107,29 @@ export class LoginComponent implements OnInit {
       }
     })
   }
+
+  //    forgetTimer(duration: any, display: any) {
+  //     var timer = duration, minutes, seconds ;
+  //     setInterval(function () {
+  //         minutes = parseInt(timer / 60, 10);
+  //         seconds = parseInt(timer % 60, 10);
+
+  //         minutes = minutes < 10 ? "0" + minutes : minutes;
+  //         seconds = seconds < 10 ? "0" + seconds : seconds;
+
+  //         display.textContent = minutes + ":" + seconds;
+
+  //         if (--timer < 0) {
+  //             timer = duration;
+  //         }
+  //     }, 1000);
+  // }
+
+  // window.onload = function () {
+  //     var fiveMinutes = 60 * 5,
+  //         display = document.querySelector('#time');
+  //     startTimer(fiveMinutes, display);
+  // };
 
 
 }

@@ -21,8 +21,7 @@ import { InputComponent } from './components/input/input.component';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
-    NgxPaginationModule
-,
+    NgxPaginationModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

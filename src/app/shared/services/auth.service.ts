@@ -25,15 +25,14 @@ export class AuthService {
   }
 
   // forget password
-  forgetPassword(email: string): Observable<any>{
+  forgetPassword(email: string): Observable<any> {
     return this._HttpClient.post(this.apiUrl + 'Auth/ForgetPassword', email)
   }
 
   // reset password
-  resetPassword(forget: any): Observable<any>{
-    return this._HttpClient.post(this.apiUrl + 'Auth/ResetPassword', forget)
+  resetPassword(reset: any): Observable<any> {
+    return this._HttpClient.post(this.apiUrl + 'Auth/ResetPassword', reset)
   }
-
 
 
 }

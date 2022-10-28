@@ -1,402 +1,340 @@
 <section class="main">
-  <div class="sub_main">
-    <div class="d-flex justify-content-end">
-      <h1 class="sec_title pb-2">الإعدادات</h1>
-    </div>
-    <div class="users">
-      <div class="d-flex justify-content-center pt-2">
-        <h3 class="users-title p-0 m-0">المستخدمين</h3>
-      </div>
-      <div class="text-end my-3">
-        <button class="btn btn-outline-primary" data-bs-toggle="modal"
-          data-bs-target="#addUser"><i
-            class="fa-solid fa-user-tie me-2"></i>إضافة مستخدم</button>
-      </div>
-      <div class="section_2 my-3 mx-2">
-        <div class="filter_search d-flex justify-content-between">
-          <div class="text-end">
-            <button class="btn btn-outline-info me-1"><i class="fa-solid
-                fa-filter"></i></button>
-            <button class="btn btn-outline-dark ms-1"><i class="fa-solid
-                fa-code"></i></button>
-          </div>
-          <div class="search w-50">
-            <input type="search" class="form-control text-end" placeholder="إبحث هنا">
-          </div>
-
+    <div class="sub_main">
+        <div class="d-flex justify-content-end">
+            <h1 class="sec_title pb-2">الإعدادات</h1>
         </div>
-      </div>
-      <div class="section_3 rounded">
-        <div class="table-responsive" style="min-height: 300px;">
-          <table class="table table-hover table-borderless text-center
+        <div class="users">
+            <div class="d-flex justify-content-center pt-2">
+                <h3 class="users-title p-0 m-0">المستخدمين</h3>
+            </div>
+            <div class="text-end my-3">
+                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addUser"><i
+            class="fa-solid fa-user-tie me-2"></i>إضافة مستخدم</button>
+            </div>
+            <div class="section_2 my-3 mx-2">
+                <div class="filter_search d-flex justify-content-between">
+                    <div class="text-end">
+                        <button class="btn btn-outline-info me-1"><i class="fa-solid
+                fa-filter"></i></button>
+                        <button class="btn btn-outline-dark ms-1"><i class="fa-solid
+                fa-code"></i></button>
+                    </div>
+                    <div class="search w-50">
+                        <input type="search" class="form-control text-end" placeholder="إبحث هنا">
+                    </div>
+
+                </div>
+            </div>
+            <div class="section_3 rounded">
+                <div class="table-responsive" style="min-height: 300px;">
+                    <table class="table table-hover table-borderless text-center
             caption-top text-end">
-            <caption class="me-4 text-end">قائمة المستخدمين <i class="fa-solid
+                        <caption class="me-4 text-end">قائمة المستخدمين <i class="fa-solid
                 fa-users ms-2"></i></caption>
-            <thead>
-              <tr>
-                <th scope="col">العمليات</th>
-                <th scope="col">الإيميل</th>
-                <th scope="col">العنوان</th>
-                <th scope="col">إسم المستخدم</th>
-                <th scope="col">الهاتف</th>
-                <th scope="col">الإسم</th>
-                <th scope="col">#</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let user of users | paginate: { id: 'usersPagination',
+                        <thead>
+                            <tr>
+                                <th scope="col">العمليات</th>
+                                <th scope="col">الإيميل</th>
+                                <th scope="col">العنوان</th>
+                                <th scope="col">إسم المستخدم</th>
+                                <th scope="col">الهاتف</th>
+                                <th scope="col">الإسم</th>
+                                <th scope="col">#</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let user of users | paginate: { id: 'usersPagination',
               itemsPerPage: 5,
               currentPage: p,
               totalItems: total }; let i= index " style="vertical-align: middle; cursor: pointer;">
-                <td>
-                  <button class="btn me-1 border-0">
+                                <td>
+                                    <button class="btn me-1 border-0">
                     <img src="assets/images/main/delete.png" width="30">
                   </button>
-                  <button class="btn me-1 border-0" data-bs-toggle="modal"
-                    data-bs-target="#editUser">
+                                    <button class="btn me-1 border-0" data-bs-toggle="modal" data-bs-target="#editUser">
                     <img src="assets/images/main/edit.png" width="30">
                   </button>
-                </td>
-                <td>{{ user.email }}</td>
-                <td>
-                  {{ user.address }}
-                </td>
-                <td class="text-primary">{{ user.userName }}</td>
-                <td>{{ user.phone }}</td>
-                <td>{{ user.firstName + ' ' + user.lastName }}</td>
-                <th scope="row">1</th>
-              </tr>
+                                </td>
+                                <td>{{ user.email }}</td>
+                                <td>
+                                    {{ user.address }}
+                                </td>
+                                <td class="text-primary">{{ user.userName }}</td>
+                                <td>{{ user.phone }}</td>
+                                <td>{{ user.firstName + ' ' + user.lastName }}</td>
+                                <th scope="row">1</th>
+                            </tr>
 
-            </tbody>
-          </table>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- pagination -->
+                <div class="mx-auto text-center my-3">
+                    <pagination-controls id="usersPagination" (pageChange)="pageChanged($event)" (pageBoundsCorrection)="pageChanged($event)" [maxSize]="9" [directionLinks]="true" [autoHide]="true" [responsive]="true" previousLabel="Previous" nextLabel="Next">
+                    </pagination-controls>
+                </div>
+            </div>
         </div>
-        <!-- pagination -->
-<div class="mx-auto text-center my-3">
-  <pagination-controls id="usersPagination"
-    (pageChange)="pageChanged($event)"
-    (pageBoundsCorrection)="pageChanged($event)" [maxSize]="9"
-    [directionLinks]="true" [autoHide]="true" [responsive]="true"
-    previousLabel="Previous" nextLabel="Next">
-  </pagination-controls>
-</div>
-      </div>
-    </div>
-    <div class="owners">
-      <div class="d-flex justify-content-center py-5">
-        <h3 class="owners-title p-0 m-0">الوحدات</h3>
-      </div>
-      <div class="text-end my-3">
-        <button class="btn btn-outline-primary" data-bs-toggle="modal"
-          data-bs-target="#addUnit"><i class="fa-solid fa-warehouse me-2"></i>إضافة
+        <div class="owners">
+            <div class="d-flex justify-content-center py-5">
+                <h3 class="owners-title p-0 m-0">الوحدات</h3>
+            </div>
+            <div class="text-end my-3">
+                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addUnit"><i
+            class="fa-solid fa-warehouse me-2"></i>إضافة
           وحدة</button>
-      </div>
-      <div class="section_3 rounded pb-3">
-        <div class="table-responsive" style="min-height: 300px;">
-          <table class="table table-hover table-borderless text-center
+            </div>
+            <div class="section_3 rounded pb-3">
+                <div class="table-responsive" style="min-height: 300px;">
+                    <table class="table table-hover table-borderless text-center
             caption-top text-end">
-            <caption class="me-4 text-end">قائمة الوحدات <i class="fa-solid
+                        <caption class="me-4 text-end">قائمة الوحدات <i class="fa-solid
                 fa-users ms-2"></i></caption>
-            <thead>
-              <tr>
-                <th scope="col">عمليات</th>
-                <th scope="col">الهاتف</th>
-                <th scope="col">الإسم</th>
-                <th scope="col">#</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let unit of units | paginate: { id: 'unitsPagination',
+                        <thead>
+                            <tr>
+                                <th scope="col">عمليات</th>
+                                <th scope="col">الهاتف</th>
+                                <th scope="col">الإسم</th>
+                                <th scope="col">#</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let unit of units | paginate: { id: 'unitsPagination',
                 itemsPerPage: 5,
                 currentPage: p,
                 totalItems: total }; let i= index" style="vertical-align:
                 middle; cursor: pointer;">
-                <td>
-                  <button class="btn me-1 border-0">
+                                <td>
+                                    <button class="btn me-1 border-0">
                     <img src="assets/images/main/delete.png" width="30">
                   </button>
-                  <button class="btn me-1 border-0" data-bs-toggle="modal"
-                    data-bs-target="#editUnit">
+                                    <button class="btn me-1 border-0" data-bs-toggle="modal" data-bs-target="#editUnit">
                     <img src="assets/images/main/edit.png" width="30">
                   </button>
-                </td>
-                <td>{{ unit.phone }}</td>
-                <td>{{ unit.name }}</td>
-                <th scope="row">{{ i+1 }}</th>
-              </tr>
+                                </td>
+                                <td>{{ unit.phone }}</td>
+                                <td>{{ unit.name }}</td>
+                                <th scope="row">{{ i+1 }}</th>
+                            </tr>
 
-            </tbody>
-          </table>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- pagination -->
+                <div class="mx-auto text-center my-3">
+                    <pagination-controls id="unitsPagination" (pageChange)="pageChanged($event)" (pageBoundsCorrection)="pageChanged($event)" [maxSize]="9" [directionLinks]="true" [autoHide]="true" [responsive]="true" previousLabel="Previous" nextLabel="Next">
+                    </pagination-controls>
+                </div>
+            </div>
+
+
         </div>
-<!-- pagination -->
-<div class="mx-auto text-center my-3">
-  <pagination-controls id="unitsPagination"
-    (pageChange)="pageChanged($event)"
-    (pageBoundsCorrection)="pageChanged($event)" [maxSize]="9"
-    [directionLinks]="true" [autoHide]="true" [responsive]="true"
-    previousLabel="Previous" nextLabel="Next">
-  </pagination-controls>
-</div>
-      </div>
-
 
     </div>
-
-  </div>
 </section>
 
 <!-- add user modal -->
 
-<div class="modal fade" id="addUser" tabindex="-1"
-  aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="btn-close ms-0" data-bs-dismiss="modal"
-        aria-label="Close"></button>
-        <h5 class="modal-title" id="exampleModalLabel">إضافة</h5>
+<div class="modal fade" id="addUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close ms-0" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title" id="exampleModalLabel">إضافة</h5>
 
-      </div>
-      <div class="modal-body text-end">
-        <h3 class="mb-1 text-center">إضافة مستخدم</h3>
-        <form [formGroup]="addUserForm">
-          <div class="form-group">
-            <label>الاسم الاول</label>
-            <app-input [control]="addUserForm.get('firstName')"
-              [id]="'add-firstName'" [class]="'form-control mb-2 text-end'"
-              [type]="'text'" [placeholder]="'ادخل الاسم الاول'">
-            </app-input>
-          </div>
-          <div class="form-group">
-            <label>الاسم الثاني</label>
-            <app-input [control]="addUserForm.get('lastName')"
-              [id]="'add-lastName'" [class]="'form-control mb-2 text-end'"
-              [type]="'text'" [placeholder]="'ادخل الاسم الثاني'">
-            </app-input>
-          </div>
-          <div class="form-group">
-            <label>اسم المستخدم</label>
-            <app-input [control]="addUserForm.get('userName')"
-              [id]="'add-userName'" [class]="'form-control mb-2 text-end'"
-              [type]="'text'" [placeholder]="'ادخل اسم المستخدم'">
-            </app-input>
-          </div>
-          <div class="form-group">
-            <label>الهاتف</label>
-            <app-input [control]="addUserForm.get('phone')" [id]="'add-phone'"
-              [class]="'form-control mb-2 text-end'" [type]="'number'"
-              [placeholder]="'ادخل الهاتف'">
-            </app-input>
-          </div>
-          <div class="form-group">
-            <label>العنوان</label>
-            <app-input [control]="addUserForm.get('address')"
-              [id]="'add-address'" [class]="'form-control mb-2 text-end'"
-              [type]="'text'" [placeholder]="'ادخل العنوان'">
-            </app-input>
-          </div>
-          <div class="form-group">
-            <label>الايميل</label>
-            <app-input [control]="addUserForm.get('email')" [id]="'add-email'"
-              [class]="'form-control mb-2 text-end'" [type]="'email'"
-              [placeholder]="'ادخل الايميل'">
-            </app-input>
-          </div>
-          <div class="form-group">
-            <label>الرقم السري</label>
-            <app-input [control]="addUserForm.get('password')"
-              [id]="'add-password'" [class]="'form-control mb-2 text-end'"
-              [type]="'password'" [placeholder]="'*********'">
-            </app-input>
-          </div>
-          <div class="form-group">
-            <label>تأكيد الرقم السري</label>
-            <app-input [control]="addUserForm.get('confirmPassword')"
-              [id]="'add-confirmPassword'" [class]="'form-control mb-2
+            </div>
+            <div class="modal-body text-end">
+                <h3 class="mb-1 text-center">إضافة مستخدم</h3>
+                <form [formGroup]="addUserForm">
+                    <div class="form-group">
+                        <label>الاسم الاول</label>
+                        <app-input [control]="addUserForm.get('firstName')" [id]="'add-firstName'" [class]="'form-control mb-2 text-end'" [type]="'text'" [placeholder]="'ادخل الاسم الاول'">
+                        </app-input>
+                    </div>
+                    <div class="form-group">
+                        <label>الاسم الثاني</label>
+                        <app-input [control]="addUserForm.get('lastName')" [id]="'add-lastName'" [class]="'form-control mb-2 text-end'" [type]="'text'" [placeholder]="'ادخل الاسم الثاني'">
+                        </app-input>
+                    </div>
+                    <div class="form-group">
+                        <label>اسم المستخدم</label>
+                        <app-input [control]="addUserForm.get('userName')" [id]="'add-userName'" [class]="'form-control mb-2 text-end'" [type]="'text'" [placeholder]="'ادخل اسم المستخدم'">
+                        </app-input>
+                    </div>
+                    <div class="form-group">
+                        <label>الهاتف</label>
+                        <app-input [control]="addUserForm.get('phone')" [id]="'add-phone'" [class]="'form-control mb-2 text-end'" [type]="'number'" [placeholder]="'ادخل الهاتف'">
+                        </app-input>
+                    </div>
+                    <div class="form-group">
+                        <label>العنوان</label>
+                        <app-input [control]="addUserForm.get('address')" [id]="'add-address'" [class]="'form-control mb-2 text-end'" [type]="'text'" [placeholder]="'ادخل العنوان'">
+                        </app-input>
+                    </div>
+                    <div class="form-group">
+                        <label>الايميل</label>
+                        <app-input [control]="addUserForm.get('email')" [id]="'add-email'" [class]="'form-control mb-2 text-end'" [type]="'email'" [placeholder]="'ادخل الايميل'">
+                        </app-input>
+                    </div>
+                    <div class="form-group">
+                        <label>الرقم السري</label>
+                        <app-input [control]="addUserForm.get('password')" [id]="'add-password'" [class]="'form-control mb-2 text-end'" [type]="'password'" [placeholder]="'*********'">
+                        </app-input>
+                    </div>
+                    <div class="form-group">
+                        <label>تأكيد الرقم السري</label>
+                        <app-input [control]="addUserForm.get('confirmPassword')" [id]="'add-confirmPassword'" [class]="'form-control mb-2
               text-end'" [type]="'password'" [placeholder]="'*********'">
-            </app-input>
-          </div>
-          <div class="mx-auto text-center">
-            <button class="btn btn-outline-primary mt-2" (click)="addUser()"><i
+                        </app-input>
+                    </div>
+                    <div class="mx-auto text-center">
+                        <button class="btn btn-outline-primary mt-2" (click)="addUser()"><i
                 class="fa-solid fa-user-pen me-1"></i>إنشاء مستخدم</button>
-          </div>
-        </form>
+                    </div>
+                </form>
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-danger "
-          data-bs-dismiss="modal">اغلاق</button>
-      </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger " data-bs-dismiss="modal">اغلاق</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <!-- edit user modal -->
 
-<div class="modal fade" id="editUser" tabindex="-1"
-  aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="btn-close ms-0" data-bs-dismiss="modal"
-        aria-label="Close"></button>
-        <h5 class="modal-title" id="exampleModalLabel">تعديل</h5>
+<div class="modal fade" id="editUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close ms-0" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title" id="exampleModalLabel">تعديل</h5>
 
-      </div>
-      <div class="modal-body text-end">
-        <h3 class="mb-1 text-center">تعديل مستخدم</h3>
-        <form [formGroup]="editUserForm">
-          <div class="form-group">
-            <label>الاسم الاول</label>
-            <app-input [control]="editUserForm.get('firstName')"
-              [id]="'edit-firstName'" [class]="'form-control mb-2 text-end'"
-              [type]="'text'" [placeholder]="'ادخل الاسم الاول'">
-            </app-input>
-          </div>
-          <div class="form-group">
-            <label>الاسم الثاني</label>
-            <app-input [control]="editUserForm.get('lastName')"
-              [id]="'edit-lastName'" [class]="'form-control mb-2 text-end'"
-              [type]="'text'" [placeholder]="'ادخل الاسم الثاني'">
-            </app-input>
-          </div>
-          <div class="form-group">
-            <label>اسم المستخدم</label>
-            <app-input [control]="editUserForm.get('userName')"
-              [id]="'edit-userName'" [class]="'form-control mb-2 text-end'"
-              [type]="'text'" [placeholder]="'ادخل اسم المستخدم'">
-            </app-input>
-          </div>
-          <div class="form-group">
-            <label>الهاتف</label>
-            <app-input [control]="editUserForm.get('phone')" [id]="'edit-phone'"
-              [class]="'form-control mb-2 text-end'" [type]="'number'"
-              [placeholder]="'ادخل الهاتف'">
-            </app-input>
-          </div>
-          <div class="form-group">
-            <label>العنوان</label>
-            <app-input [control]="editUserForm.get('address')"
-              [id]="'edit-address'" [class]="'form-control mb-2 text-end'"
-              [type]="'text'" [placeholder]="'ادخل العنوان'">
-            </app-input>
-          </div>
-          <div class="form-group">
-            <label>الايميل</label>
-            <app-input [control]="editUserForm.get('email')" [id]="'edit-email'"
-              [class]="'form-control mb-2 text-end'" [type]="'email'"
-              [placeholder]="'ادخل الايميل'">
-            </app-input>
-          </div>
-          <div class="form-group">
-            <label>الرقم السري</label>
-            <app-input [control]="editUserForm.get('password')"
-              [id]="'edit-password'" [class]="'form-control mb-2 text-end'"
-              [type]="'password'" [placeholder]="'*********'">
-            </app-input>
-          </div>
-          <div class="form-group">
-            <label>تأكيد الرقم السري</label>
-            <app-input [control]="editUserForm.get('confirmPassword')"
-              [id]="'edit-confirmPassword'" [class]="'form-control mb-2
+            </div>
+            <div class="modal-body text-end">
+                <h3 class="mb-1 text-center">تعديل مستخدم</h3>
+                <form [formGroup]="editUserForm">
+                    <div class="form-group">
+                        <label>الاسم الاول</label>
+                        <app-input [control]="editUserForm.get('firstName')" [id]="'edit-firstName'" [class]="'form-control mb-2 text-end'" [type]="'text'" [placeholder]="'ادخل الاسم الاول'">
+                        </app-input>
+                    </div>
+                    <div class="form-group">
+                        <label>الاسم الثاني</label>
+                        <app-input [control]="editUserForm.get('lastName')" [id]="'edit-lastName'" [class]="'form-control mb-2 text-end'" [type]="'text'" [placeholder]="'ادخل الاسم الثاني'">
+                        </app-input>
+                    </div>
+                    <div class="form-group">
+                        <label>اسم المستخدم</label>
+                        <app-input [control]="editUserForm.get('userName')" [id]="'edit-userName'" [class]="'form-control mb-2 text-end'" [type]="'text'" [placeholder]="'ادخل اسم المستخدم'">
+                        </app-input>
+                    </div>
+                    <div class="form-group">
+                        <label>الهاتف</label>
+                        <app-input [control]="editUserForm.get('phone')" [id]="'edit-phone'" [class]="'form-control mb-2 text-end'" [type]="'number'" [placeholder]="'ادخل الهاتف'">
+                        </app-input>
+                    </div>
+                    <div class="form-group">
+                        <label>العنوان</label>
+                        <app-input [control]="editUserForm.get('address')" [id]="'edit-address'" [class]="'form-control mb-2 text-end'" [type]="'text'" [placeholder]="'ادخل العنوان'">
+                        </app-input>
+                    </div>
+                    <div class="form-group">
+                        <label>الايميل</label>
+                        <app-input [control]="editUserForm.get('email')" [id]="'edit-email'" [class]="'form-control mb-2 text-end'" [type]="'email'" [placeholder]="'ادخل الايميل'">
+                        </app-input>
+                    </div>
+                    <div class="form-group">
+                        <label>الرقم السري</label>
+                        <app-input [control]="editUserForm.get('password')" [id]="'edit-password'" [class]="'form-control mb-2 text-end'" [type]="'password'" [placeholder]="'*********'">
+                        </app-input>
+                    </div>
+                    <div class="form-group">
+                        <label>تأكيد الرقم السري</label>
+                        <app-input [control]="editUserForm.get('confirmPassword')" [id]="'edit-confirmPassword'" [class]="'form-control mb-2
               text-end'" [type]="'password'" [placeholder]="'*********'">
-            </app-input>
-          </div>
-          <div class="mx-auto text-center">
-            <button class="btn btn-outline-info mt-2" (click)="editUser()"><i
+                        </app-input>
+                    </div>
+                    <div class="mx-auto text-center">
+                        <button class="btn btn-outline-info mt-2" (click)="editUser()"><i
                 class="fa-regular fa-pen-to-square me-1"></i>تعديل مستخدم</button>
-          </div>
-        </form>
+                    </div>
+                </form>
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-danger "
-          data-bs-dismiss="modal">اغلاق</button>
-      </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger " data-bs-dismiss="modal">اغلاق</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 
 <!-- add unit modal -->
 
-<div class="modal fade" id="addUnit" tabindex="-1"
-  aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="btn-close ms-0" data-bs-dismiss="modal"
-          aria-label="Close"></button>
-        <h5 class="modal-title " id="exampleModalLabel">إضافة</h5>
-      </div>
-      <div class="modal-body text-end">
-        <h3 class="mb-1 text-center">إضافة وحدة</h3>
-        <form [formGroup]="addUnitForm">
-          <div class="form-group">
-            <label>اسم الوحدة</label>
-            <app-input [control]="addUnitForm.get('name')" [id]="'add-name'"
-              [class]="'form-control mb-2 text-end'" [type]="'text'"
-              [placeholder]="'ادخل اسم الوحده'">
-            </app-input>
-          </div>
-          <div class="form-group">
-            <label>الهاتف</label>
-            <app-input [control]="addUnitForm.get('phone')"
-              [id]="'add-phoneUnit'" [class]="'form-control mb-2 text-end'"
-              [type]="'number'" [placeholder]="'الهاتف'">
-            </app-input>
-          </div>
-          <div class="text-center">
-            <button class="btn btn-outline-primary" (click)="addUnit()"><i
+<div class="modal fade" id="addUnit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close ms-0" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title " id="exampleModalLabel">إضافة</h5>
+            </div>
+            <div class="modal-body text-end">
+                <h3 class="mb-1 text-center">إضافة وحدة</h3>
+                <form [formGroup]="addUnitForm">
+                    <div class="form-group">
+                        <label>اسم الوحدة</label>
+                        <app-input [control]="addUnitForm.get('name')" [id]="'add-name'" [class]="'form-control mb-2 text-end'" [type]="'text'" [placeholder]="'ادخل اسم الوحده'">
+                        </app-input>
+                    </div>
+                    <div class="form-group">
+                        <label>الهاتف</label>
+                        <app-input [control]="addUnitForm.get('phone')" [id]="'add-phoneUnit'" [class]="'form-control mb-2 text-end'" [type]="'number'" [placeholder]="'الهاتف'">
+                        </app-input>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-outline-primary" (click)="addUnit()"><i
                 class="fa-solid fa-hotel me-1"></i>إضافة</button>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-danger "
-          data-bs-dismiss="modal">اغلاق</button>
-      </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger " data-bs-dismiss="modal">اغلاق</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <!-- edit unit modal -->
 
-<div class="modal fade" id="editUnit" tabindex="-1"
-  aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="btn-close ms-0" data-bs-dismiss="modal"
-          aria-label="Close"></button>
-        <h5 class="modal-title " id="exampleModalLabel">تعديل</h5>
-      </div>
-      <div class="modal-body text-end">
-        <h3 class="mb-1 text-center">تعديل وحدة</h3>
-        <form [formGroup]="editUnitForm">
-          <div class="form-group">
-            <label>اسم الوحدة</label>
-            <app-input [control]="editUnitForm.get('name')" [id]="'edit-name'"
-              [class]="'form-control mb-2 text-end'" [type]="'text'"
-              [placeholder]="'ادخل اسم الوحده'">
-            </app-input>
-          </div>
-          <div class="form-group">
-            <label>الهاتف</label>
-            <app-input [control]="editUnitForm.get('phone')"
-              [id]="'edit-phoneUnit'" [class]="'form-control mb-2 text-end'"
-              [type]="'number'" [placeholder]="'الهاتف'">
-            </app-input>
-          </div>
-          <div class="text-center">
-            <button class="btn btn-outline-info" (click)="editUnit()"><i
-                class="fa-solid fa-pen me-1"></i>تعديل</button>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-danger "
-          data-bs-dismiss="modal">اغلاق</button>
-      </div>
+<div class="modal fade" id="editUnit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close ms-0" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title " id="exampleModalLabel">تعديل</h5>
+            </div>
+            <div class="modal-body text-end">
+                <h3 class="mb-1 text-center">تعديل وحدة</h3>
+                <form [formGroup]="editUnitForm">
+                    <div class="form-group">
+                        <label>اسم الوحدة</label>
+                        <app-input [control]="editUnitForm.get('name')" [id]="'edit-name'" [class]="'form-control mb-2 text-end'" [type]="'text'" [placeholder]="'ادخل اسم الوحده'">
+                        </app-input>
+                    </div>
+                    <div class="form-group">
+                        <label>الهاتف</label>
+                        <app-input [control]="editUnitForm.get('phone')" [id]="'edit-phoneUnit'" [class]="'form-control mb-2 text-end'" [type]="'number'" [placeholder]="'الهاتف'">
+                        </app-input>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-outline-info" (click)="editUnit()"><i class="fa-solid fa-pen me-1"></i>تعديل</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger " data-bs-dismiss="modal">اغلاق</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
