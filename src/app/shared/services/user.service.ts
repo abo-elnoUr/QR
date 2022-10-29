@@ -47,4 +47,19 @@ export class UserService {
     return this._HttpClient.get<Unit[]>(this.apiUrl + 'Unit/GetAll')
   }
 
+  // get unit by id
+  getUnit(id: any): Observable<Unit>{
+    return this._HttpClient.get<Unit>(this.apiUrl + `Unit/GetUnitById/${id}`)
+  }
+
+  // update unit
+  updateUnit(unit: Unit, id:any): Observable<Unit>{
+    return this._HttpClient.put<Unit>(this.apiUrl + `Unit/Update/${id}`, unit)
+  }
+
+  // delete unit
+  deleteUnit(id: any): Observable<Unit>{
+    return this._HttpClient.delete<Unit>(this.apiUrl + `Unit/Delete/${id}`)
+  }
+
 }

@@ -9,81 +9,130 @@
           <div class="title mx-auto text-danger" style="vertical-align:
             middle;">
             <h3 class="">مرفوض</h3>
-            <p class="text-center fs-4 mb-0">3</p>
+            <p class="text-center fs-4 mb-0">{{ rejectedOwners }}</p>
           </div>
         </div>
         <div class="col card_mine d-flex p-2 rounded mb-2">
           <div class="title mx-auto text-success" style="vertical-align:
             middle;">
             <h3 class="">مقبول</h3>
-            <p class="text-center fs-4 mb-0">8</p>
+            <p class="text-center fs-4 mb-0">{{ approvedAccount }}</p>
           </div>
         </div>
         <div class="col card_mine d-flex p-2 rounded mb-2">
           <div class="title mx-auto text-secondary" style="vertical-align:
             middle;">
             <h3 class="">معلق</h3>
-            <p class="text-center fs-4 mb-0">14</p>
+            <p class="text-center fs-4 mb-0">{{ pendingAccount }}</p>
           </div>
         </div>
       </div>
     </div>
-    <div class="section_2 my-3 mx-2">
-      <div class="filter_search d-flex justify-content-between">
-        <div class="text-end">
-          <button class="btn btn-outline-info me-1"><i class="fa-solid
-              fa-filter"></i></button>
-          <button class="btn btn-outline-dark ms-1"><i class="fa-solid fa-code"></i></button>
-        </div>
-        <div class="search w-50">
-          <input type="search" class="form-control text-end" placeholder="إبحث هنا">
-        </div>
-
+    <div *ngIf="registerOrders.length == 0" class="m-auto text-center">
+      <div class="d-flex justify-content-center align-content-center my-5">
+          <img src="/assets/images/main/register.png" width="200" alt="no brands" />
       </div>
-    </div>
-    <div class="section_3 rounded">
-      <div class="table-responsive">
-        <table class="table table-hover table-borderless text-center text-end">
-          <thead>
-            <tr>
-              <th scope="col">عمليات</th>
-              <th scope="col">الحالة</th>
-              <th scope="col">الايميل</th>
-              <th scope="col">الهاتف</th>
-              <th scope="col">الإسم</th>
-              <th scope="col">#</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="vertical-align: middle; cursor: pointer;">
-              <td>
-                <button class="btn me-1 border-0">
-                  <img src="assets/images/main/delete.png" width="30">
-                </button>
+      <p class="mt-2">🙃 لا يوجد طلبات تسجيل</p>
+  </div>
+    <div *ngIf="registerOrders.length > 0">
+      <div class="section_2 my-3 mx-2">
+        <div class="filter_search d-flex justify-content-between">
+          <div class="text-end">
+            <button class="btn btn-outline-info me-1"><i class="fa-solid
+                fa-filter"></i></button>
+            <button class="btn btn-outline-dark ms-1"><i class="fa-solid fa-code"></i></button>
+          </div>
+          <div class="search w-50">
+            <input type="search" class="form-control text-end" placeholder="إبحث هنا">
+          </div>
+
+        </div>
+      </div>
+      <div class="section_3 rounded">
+        <div class="table-responsive">
+          <table class="table table-hover table-borderless text-center text-end">
+            <thead>
+              <tr>
+                <th scope="col">عمليات</th>
+                <th scope="col">الحالة</th>
+                <th scope="col">الوحدة</th>
+                <th scope="col">الصورة</th>
+                <th scope="col">الهاتف</th>
+                <th scope="col">الإسم</th>
+                <th scope="col">#</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let registerOrder of registerOrders | paginate: { id: 'usersPagination',
+              itemsPerPage: 10,
+              currentPage: pAccount,
+              totalItems: totalAccount }; let i= index " style="vertical-align: middle; cursor: pointer;">
+                <td>
+                  <button class="btn me-1 border-0" (click)="deleteOwner(registerOrder.id)">
+                    <img src="/assets/images/main/delete.png" width="30">
+                  </button>
+                </td>
+                <td>
+                <div class="d-flex justify-content-center">
+                  <div *ngIf="statusValue == 'مفعل' && registerOrder.switch == true" class="text-success">
+                    <i class="fa-solid fa-check me-1"></i>{{ statusValue }}
+                  </div>
+                  <div *ngIf="statusValue == 'غير مفعل' && registerOrder.switch == false" class="text-danger">
+                    <i class="fa-solid fa-xmark me-1"></i>{{ statusValue }}
+                  </div>
+                  <div class="form-check form-switch ms-1">
+                    <input class="form-check-input" [checked]="registerOrder.switch" (change)="switchStatus($event, registerOrder.id)" type="checkbox">
+                  </div>
+                </div>
               </td>
-              <td>
-              <div class="d-flex justify-content-center">
-                <div *ngIf="statusValue == 'مفعل'" class="text-success">
-                  <i class="fa-solid fa-check me-1"></i>{{ statusValue }}
-                </div>
-                <div *ngIf="statusValue == 'غير مفعل'" class="text-danger">
-                  <i class="fa-solid fa-xmark me-1"></i>{{ statusValue }}
-                </div>
-                <div class="form-check form-switch ms-1">
-                  <input class="form-check-input"  (change)="doSomeThing($event)" type="checkbox">
-                </div>
-              </div>
-            </td>
-            <td class="text-primary">test@google.com</td>
-            <td >01006438385</td>
-            <td >جروزا</td>
-              <th scope="row">1</th>
-            </tr>
+              <td data-bs-toggle="modal" data-bs-target="#viewImage" (click)="viewImage(registerOrder.image)" *ngIf="registerOrder.ownerUnit">{{ registerOrder.ownerUnit }}</td>
+              <td data-bs-toggle="modal" data-bs-target="#viewImage" (click)="viewImage(registerOrder.image)" *ngIf="!registerOrder.ownerUnit">ليس لديه وحدة</td>
+              <td data-bs-toggle="modal" data-bs-target="#viewImage" (click)="viewImage(registerOrder.image)" *ngIf="registerOrder.image == null">
+                <img src="/assets/images/dashboard/man.png" width="50">
+              </td>
+              <td data-bs-toggle="modal" data-bs-target="#viewImage" (click)="viewImage(registerOrder.image)" *ngIf="registerOrder.image">
+                <img [src]=" imgUrl + registerOrder.image " width="50">
+              </td>
+              <td data-bs-toggle="modal" data-bs-target="#viewImage" (click)="viewImage(registerOrder.image)" >{{ registerOrder.ownerPhone }}</td>
+              <td data-bs-toggle="modal" data-bs-target="#viewImage" (click)="viewImage(registerOrder.image)" >{{ registerOrder.ownerName }}</td>
+                <th data-bs-toggle="modal" data-bs-target="#viewImage" (click)="viewImage(registerOrder.image)" scope="row">{{ i+1 }}</th>
+              </tr>
 
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
+        <!-- pagination -->
+        <div class="mx-auto text-center my-3 pb-3">
+          <pagination-controls id="usersPagination" (pageChange)="pageChangedAccount($event)" (pageBoundsCorrection)="pageChangedAccount($event)" [maxSize]="9" [directionLinks]="true"  [responsive]="true" previousLabel="Previous" nextLabel="Next">
+          </pagination-controls>
+      </div>
       </div>
     </div>
+
+
   </div>
 </section>
 
+
+<!-- view image Modal -->
+<div class="modal fade" id="viewImage" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close ms-1" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title" id="exampleModalLabel">مشاهدة</h5>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="imgPath" class="mx-auto text-center">
+          <img [src]="imgUrl + imgPath" class="img-fluid" width="200">
+        </div>
+        <div *ngIf="imgPath == null" class="mx-auto text-center">
+          <img src="/assets/images/dashboard/man.png" class="img-fluid" width="200">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">إغلاق</button>
+      </div>
+    </div>
+  </div>
+</div>

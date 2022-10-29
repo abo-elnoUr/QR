@@ -30,42 +30,45 @@
             </tr>
           </thead>
           <tbody>
-            <tr style="vertical-align: middle; cursor: pointer;">
-              <td>
+            <tr *ngFor="let reversation of reservations | paginate: { id: 'reversationPagination',
+            itemsPerPage: 10,
+            currentPage: pReversation,
+            totalItems: totalReversation }; let i= index " style="vertical-align: middle; cursor: pointer;">
+              <!-- <td *ngIf="reversation.approve == true">
                 <button class="btn me-1 border-0">
-                  <img src="assets/images/invitaions/like.png" width="30">
+                  <img src="/assets/images/invitaions/approved.png" width="35">
+                </button>
+              </td>
+              <td *ngIf="reversation.approve == false">
+                <button class="btn me-1 border-0">
+                  <img src="/assets/images/invitaions/rejected.png" width="35">
+                </button>
+              </td> -->
+              <td >
+                <button class="btn me-1 border-0">
+                  <img src="/assets/images/invitaions/pending.png" width="35">
                 </button>
               </td>
               <td data-bs-toggle="modal" data-bs-target="#openInvition">
-                D4
+                {{ reversation.unitName }}
               </td>
               <td data-bs-toggle="modal" data-bs-target="#openInvition"
-              class="text-primary">52369850215475</td>
-              <td data-bs-toggle="modal" data-bs-target="#openInvition">01006438385</td>
-              <td data-bs-toggle="modal" data-bs-target="#openInvition">محمد</td>
+              class="text-primary">{{ reversation.sSN }}</td>
+              <td data-bs-toggle="modal" data-bs-target="#openInvition">{{ reversation.visitorPhone }}</td>
+              <td data-bs-toggle="modal" data-bs-target="#openInvition">{{ reversation.visitorName }}</td>
               <th data-bs-toggle="modal" data-bs-target="#openInvition"
-              scope="row" data-bs-toggle="modal" data-bs-target="#openInvition">1</th>
+              scope="row" data-bs-toggle="modal" data-bs-target="#openInvition">{{ i+1 }}</th>
             </tr>
-            <tr style="vertical-align: middle; cursor: pointer;">
-              <td>
-                <button class="btn me-1 border-0">
-                  <img src="assets/images/invitaions/dislike.png" width="30">
-                </button>
-              </td>
-              <td data-bs-toggle="modal" data-bs-target="#openInvition">
-                D-76
-              </td>
-              <td data-bs-toggle="modal" data-bs-target="#openInvition"
-              class="text-primary">52369850215475</td>
-              <td data-bs-toggle="modal" data-bs-target="#openInvition">01006438385</td>
-              <td data-bs-toggle="modal" data-bs-target="#openInvition">أصفر</td>
-              <th data-bs-toggle="modal" data-bs-target="#openInvition"
-              scope="row" data-bs-toggle="modal" data-bs-target="#openInvition">2</th>
-            </tr>
+
 
           </tbody>
         </table>
       </div>
+      <!-- pagination -->
+      <div class="mx-auto text-center my-3 pb-3">
+        <pagination-controls id="usersPagination" (pageChange)="pageChangedReveration($event)" (pageBoundsCorrection)="pageChangedReveration($event)" [maxSize]="9" [directionLinks]="true"  [responsive]="true" previousLabel="Previous" nextLabel="Next">
+        </pagination-controls>
+    </div>
     </div>
   </div>
 </section>
@@ -84,7 +87,7 @@
       <div class="modal-body text-end">
         <div class="invite shadow rounded p-2">
           <div class="client">
-            <h4 class="mt-1">معلومات المالك<img src="assets/images/invitaions/key.png" class="ms-1" width="20"></h4>
+            <h4 class="mt-1">معلومات المالك<img src="/assets/images/invitaions/key.png" class="ms-1" width="20"></h4>
             <div class="d-flex flex-column mx-2">
               <label class="ms-1"><span class="text-muted">moahmed</span> : الأسم</label>
               <label class="ms-1"><span class="text-muted">test@google.com</span> : الإيميل</label>
@@ -94,7 +97,7 @@
 
           </div>
           <div class="visitor">
-            <h4 class="mt-1">معلومات الزائر<img src="assets/images/invitaions/visitor.png" class="ms-1" class="me-1" width="20"></h4>
+            <h4 class="mt-1">معلومات الزائر<img src="/assets/images/invitaions/visitor.png" class="ms-1" class="me-1" width="20"></h4>
             <div class="d-flex flex-column mx-2">
               <label class="ms-1"><span class="text-muted">ahmed</span> : الأسم</label>
               <label class="ms-1"><span class="text-muted">0123456789</span> : الهاتف</label>
@@ -104,7 +107,7 @@
 
           </div>
           <div class="visit_info">
-            <h4 class="mt-1">معلومات الزيارة<img src="assets/images/invitaions/invitation.png" class="ms-1" class="me-1" width="20"></h4>
+            <h4 class="mt-1">معلومات الزيارة<img src="/assets/images/invitaions/invitation.png" class="ms-1" class="me-1" width="20"></h4>
             <div class="d-flex flex-column mx-2">
               <label class="ms-1"><span class="text-muted">2022-10-10</span> : تبدأ في</label>
               <label class="ms-1"><span class="text-muted">2022-10-25</span> : تنتهي عند</label>

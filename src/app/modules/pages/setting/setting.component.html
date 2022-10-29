@@ -11,7 +11,13 @@
                 <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addUser"><i
             class="fa-solid fa-user-tie me-2"></i>إضافة مستخدم</button>
             </div>
-            <div class="section_2 my-3 mx-2">
+            <div *ngIf="users.length == 0" class="m-auto text-center">
+              <div class="d-flex justify-content-center align-content-center my-5">
+                  <img src="/assets/images/main/users.png" width="200" alt="no brands" />
+              </div>
+              <p class="mt-2">🙃 لا يوجد مستخدمين</p>
+          </div>
+            <div *ngIf="users.length > 0" class="section_2 my-3 mx-2">
                 <div class="filter_search d-flex justify-content-between">
                     <div class="text-end">
                         <button class="btn btn-outline-info me-1"><i class="fa-solid
@@ -25,7 +31,7 @@
 
                 </div>
             </div>
-            <div class="section_3 rounded">
+            <div *ngIf="users.length > 0" class="section_3 rounded">
                 <div class="table-responsive" style="min-height: 300px;">
                     <table class="table table-hover table-borderless text-center
             caption-top text-end">
@@ -45,32 +51,32 @@
                         <tbody>
                             <tr *ngFor="let user of users | paginate: { id: 'usersPagination',
               itemsPerPage: 5,
-              currentPage: p,
-              totalItems: total }; let i= index " style="vertical-align: middle; cursor: pointer;">
+              currentPage: pUsers,
+              totalItems: totalUsers }; let i= index " style="vertical-align: middle; cursor: pointer;">
                                 <td>
                                     <button class="btn me-1 border-0">
-                    <img src="assets/images/main/delete.png" width="30">
+                    <img src="/assets/images/main/delete.png" width="30">
                   </button>
                                     <button class="btn me-1 border-0" data-bs-toggle="modal" data-bs-target="#editUser">
-                    <img src="assets/images/main/edit.png" width="30">
+                    <img src="/assets/images/main/edit.png" width="30">
                   </button>
                                 </td>
-                                <td>{{ user.email }}</td>
+                                <td class="text-secondary">{{ user.email }}</td>
                                 <td>
                                     {{ user.address }}
                                 </td>
                                 <td class="text-primary">{{ user.userName }}</td>
                                 <td>{{ user.phone }}</td>
                                 <td>{{ user.firstName + ' ' + user.lastName }}</td>
-                                <th scope="row">1</th>
+                                <th scope="row">{{ i+1 }}</th>
                             </tr>
 
                         </tbody>
                     </table>
                 </div>
                 <!-- pagination -->
-                <div class="mx-auto text-center my-3">
-                    <pagination-controls id="usersPagination" (pageChange)="pageChanged($event)" (pageBoundsCorrection)="pageChanged($event)" [maxSize]="9" [directionLinks]="true" [autoHide]="true" [responsive]="true" previousLabel="Previous" nextLabel="Next">
+                <div class="mx-auto text-center my-3 pb-3">
+                    <pagination-controls id="usersPagination" (pageChange)="pageChangedUsers($event)" (pageBoundsCorrection)="pageChangedUsers($event)" [maxSize]="9" [directionLinks]="true"  [responsive]="true" previousLabel="Previous" nextLabel="Next">
                     </pagination-controls>
                 </div>
             </div>
@@ -84,7 +90,13 @@
             class="fa-solid fa-warehouse me-2"></i>إضافة
           وحدة</button>
             </div>
-            <div class="section_3 rounded pb-3">
+            <div *ngIf="units.length == 0" class="m-auto text-center">
+              <div class="d-flex justify-content-center align-content-center my-5">
+                  <img src="/assets/images/main/list.png" width="200" alt="no brands" />
+              </div>
+              <p class="mt-2">🙃 لا يوجد وحدات</p>
+          </div>
+            <div *ngIf="units.length > 0" class="section_3 rounded pb-3">
                 <div class="table-responsive" style="min-height: 300px;">
                     <table class="table table-hover table-borderless text-center
             caption-top text-end">
@@ -105,11 +117,11 @@
                 totalItems: total }; let i= index" style="vertical-align:
                 middle; cursor: pointer;">
                                 <td>
-                                    <button class="btn me-1 border-0">
-                    <img src="assets/images/main/delete.png" width="30">
+                                    <button class="btn me-1 border-0" (click)="deleteUnit(unit.id)">
+                    <img src="/assets/images/main/delete.png" width="30">
                   </button>
-                                    <button class="btn me-1 border-0" data-bs-toggle="modal" data-bs-target="#editUnit">
-                    <img src="assets/images/main/edit.png" width="30">
+                                    <button class="btn me-1 border-0" (click)="getUnit(unit.id)" data-bs-toggle="modal" data-bs-target="#editUnit">
+                    <img src="/assets/images/main/edit.png" width="30">
                   </button>
                                 </td>
                                 <td>{{ unit.phone }}</td>
@@ -122,7 +134,7 @@
                 </div>
                 <!-- pagination -->
                 <div class="mx-auto text-center my-3">
-                    <pagination-controls id="unitsPagination" (pageChange)="pageChanged($event)" (pageBoundsCorrection)="pageChanged($event)" [maxSize]="9" [directionLinks]="true" [autoHide]="true" [responsive]="true" previousLabel="Previous" nextLabel="Next">
+                    <pagination-controls id="unitsPagination" (pageChange)="pageChanged($event)" (pageBoundsCorrection)="pageChanged($event)" [maxSize]="9" [directionLinks]="true" [responsive]="true" previousLabel="Previous" nextLabel="Next">
                     </pagination-controls>
                 </div>
             </div>

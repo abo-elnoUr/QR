@@ -27,6 +27,7 @@ export class ProfileComponent implements OnInit {
     lname: new FormControl('', Validators.required),
     username: new FormControl(''),
     phone: new FormControl(''),
+    password: new FormControl(''),
   });
 
   ngOnInit(): void {

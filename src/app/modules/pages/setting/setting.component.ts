@@ -21,9 +21,12 @@ export class SettingComponent implements OnInit {
   editUnitForm: FormGroup;
   units: Unit[] = []
   users: User[] = []
+  unitId: any
   id: any = null
   p: number = 1;
   total: any = 0
+  pUsers: number = 1;
+  totalUsers: any = 0
 
   constructor(private _AuthService: AuthService, private _UserService: UserService, private _FormBuilder: FormBuilder, private _ToastrService: ToastrService, private _Router: Router) { }
 
@@ -109,7 +112,7 @@ export class SettingComponent implements OnInit {
       ]],
       phone: ['', [
         Validators.required,
-        Validators.minLength(9)
+        Validators.minLength(3)
       ]]
     })
     this.editUnitForm = this._FormBuilder.group({
@@ -118,7 +121,7 @@ export class SettingComponent implements OnInit {
       ]],
       phone: ['', [
         Validators.required,
-        Validators.minLength(9)
+        Validators.minLength(3)
       ]]
     })
   }
@@ -126,6 +129,12 @@ export class SettingComponent implements OnInit {
   // pagination
   pageChanged(num: any) {
     this.p = num
+    this.getUnits()
+  }
+
+  // pagination
+  pageChangedUsers(num: any) {
+    this.pUsers = num
     this.getUnits()
   }
 
@@ -138,6 +147,8 @@ export class SettingComponent implements OnInit {
         this.users = users
       },
       error: (error) => {
+        console.log(error);
+
         switch (error.status) {
           case 500:
             this._ToastrService.error(error.error.errors as string);
@@ -173,8 +184,11 @@ export class SettingComponent implements OnInit {
       next: (register) => {
         this._ToastrService.success('💛 تم تسجيل مستخدم جديد  ')
         this.addUserForm.reset()
+        this.getUsers()
       },
       error: (error) => {
+        console.log(error);
+
         switch (error.status) {
           case 500:
             this._ToastrService.error(error.error.errors as string);
@@ -262,9 +276,75 @@ export class SettingComponent implements OnInit {
     })
   }
 
+  // get unit by id
+  getUnit(id: any){
+    this._UserService.getUnit(id).subscribe({
+      next: (unit) => {
+        this.unitId = unit.id
+        this.editUnitForm.patchValue({
+          name: unit.name,
+          phone: unit.phone,
+        })
+      },
+      error: (error) =>{
+        this._ToastrService.error('😭 حدث خطأ ');
+      }
+    })
+  }
+
   // edit unit
   editUnit(){
+    this._UserService.updateUnit(this.editUnitForm.value, this.unitId).subscribe({
+      next: (updated) => {
+        this._ToastrService.info('👏 تم التعديل ')
+        this.editUnitForm.reset()
+        this.getUnits()
+      },
+      error: (error) => {
+        switch (error.status) {
+          case 500:
+            this._ToastrService.error(error.error.message as string);
+            break
+          case 401:
+            for (const [key, value] of Object.entries(error.error.errors)) {
+              this._ToastrService.error(value as string);
+            }
+            break
+          case 400:
+            for (const [key, value] of Object.entries(error.error.errors)) {
+              this._ToastrService.error(value as string);
+            }
+            break
+        }
+      }
+    })
+  }
 
+  // delete unit
+  deleteUnit(id: any){
+    this._UserService.deleteUnit(id).subscribe({
+      next: (next) => {
+        this._ToastrService.error('😭 تم الحذف ')
+        this.getUnits()
+      },
+      error: (error) => {
+        switch (error.status) {
+          case 500:
+            this._ToastrService.error(error.error.errors as string);
+            break
+          case 401:
+            for (const [key, value] of Object.entries(error.error.errors)) {
+              this._ToastrService.error(value as string);
+            }
+            break
+          case 400:
+            for (const [key, value] of Object.entries(error.error.errors)) {
+              this._ToastrService.error(value as string);
+            }
+            break
+        }
+      }
+    })
   }
 
 }
