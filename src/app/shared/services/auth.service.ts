@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -10,8 +11,8 @@ import { User } from './../models/user';
 })
 export class AuthService {
 
-  apiUrl = 'http://192.168.1.254:5214/api/'
-  // apiUrl = 'https://localhost:5001/api/'
+  // apiUrl = 'http://192.168.1.254:5214/api/'
+  apiUrl = environment.smarterUrl
   isLogin: boolean = false
 
   constructor(private _HttpClient: HttpClient) { }

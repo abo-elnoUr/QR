@@ -14,7 +14,7 @@ import { InputComponent } from './components/input/input.component';
 
 @NgModule({
   declarations: [
-    InputComponent
+    InputComponent,
   ],
   imports: [
     CommonModule,

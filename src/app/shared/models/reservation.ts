@@ -1,4 +1,4 @@
-export interface Reservation{
+export interface Reservation {
   id: number;
   visitorName: string;
   sSN: string;
@@ -10,4 +10,5 @@ export interface Reservation{
   approve: boolean;
   startDate: string;
   endDate: string;
+  visitorIdentifer: string;
 }

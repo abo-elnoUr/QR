@@ -69,9 +69,7 @@ export class LoginComponent implements OnInit {
             }
             break
           case 400:
-            for (const [key, value] of Object.entries(error.error.message)) {
-              this._ToastrService.error(value as string);
-            }
+            this._ToastrService.error(error.error.message as string);
             break
         }
       }

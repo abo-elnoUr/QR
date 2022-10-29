@@ -14,6 +14,7 @@ export class InvititionComponent implements OnInit {
   reservations: Reservation[] = []
   pReversation: number = 1;
   totalReversation: any = 0
+  reservation: Reservation
 
   constructor(private _ReservationService: ReservationService, private _ToastrService: ToastrService) { }
 
@@ -29,7 +30,7 @@ export class InvititionComponent implements OnInit {
   }
 
   // get all reservation
-  getReservations(){
+  getReservations() {
     this._ReservationService.getReservations().subscribe({
       next: (reservations) => {
         this.reservations = reservations
@@ -39,4 +40,17 @@ export class InvititionComponent implements OnInit {
       }
     })
   }
+
+  // get reservation
+  getReservation(id: number) {
+    this._ReservationService.getReservation(id).subscribe({
+      next: (reseve) => {
+        this.reservation = reseve
+      },
+      error: (error) => {
+        this._ToastrService.error('😥 حدث خطأ')
+      }
+    })
+  }
+
 }

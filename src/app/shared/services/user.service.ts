@@ -5,13 +5,15 @@ import { Observable } from 'rxjs';
 import { User } from '../models/user';
 import { Owner } from './../models/owner';
 import { Unit } from '../models/unit';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  apiUrl = 'http://192.168.1.254:5214/api/'
+  // apiUrl = 'http://192.168.1.254:5214/api/'
+  apiUrl = environment.smarterUrl
 
 
   constructor(private _HttpClient: HttpClient) { }
@@ -24,41 +26,47 @@ export class UserService {
   }
 
   // get all users
-  getUsers(): Observable<User[]>{
+  getUsers(): Observable<User[]> {
     return this._HttpClient.get<User[]>(this.apiUrl + 'Auth/GetAllUsers')
   }
 
-   // ************************************ Owners ************************************
+  // get user by id
+  getUser(id: string): Observable<User> {
+    return this._HttpClient.get<User>(this.apiUrl + `Auth/GetUserById/${id}`)
+  }
+
+  // ************************************ Owners ************************************
 
   // get all owners
-  getOwners(): Observable<Owner[]>{
+  getOwners(): Observable<Owner[]> {
     return this._HttpClient.get<Owner[]>(this.apiUrl + 'Auth/GetAllOwners')
   }
+
 
   // ************************************ Units ************************************
 
   // add unit
-  addUnit(unit: Unit): Observable<Unit>{
+  addUnit(unit: Unit): Observable<Unit> {
     return this._HttpClient.post<Unit>(this.apiUrl + 'Unit/Create', unit)
   }
 
   // get all units
-  getUnits(): Observable<Unit[]>{
+  getUnits(): Observable<Unit[]> {
     return this._HttpClient.get<Unit[]>(this.apiUrl + 'Unit/GetAll')
   }
 
   // get unit by id
-  getUnit(id: any): Observable<Unit>{
+  getUnit(id: any): Observable<Unit> {
     return this._HttpClient.get<Unit>(this.apiUrl + `Unit/GetUnitById/${id}`)
   }
 
   // update unit
-  updateUnit(unit: Unit, id:any): Observable<Unit>{
+  updateUnit(unit: Unit, id: any): Observable<Unit> {
     return this._HttpClient.put<Unit>(this.apiUrl + `Unit/Update/${id}`, unit)
   }
 
   // delete unit
-  deleteUnit(id: any): Observable<Unit>{
+  deleteUnit(id: any): Observable<Unit> {
     return this._HttpClient.delete<Unit>(this.apiUrl + `Unit/Delete/${id}`)
   }
 

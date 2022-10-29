@@ -1,40 +1,45 @@
 <section class="main">
-  <div class="sub_main">
-    <div class="d-flex justify-content-end">
-      <h1 class="sec_title pb-1"> الحجوزات</h1>
-    </div>
-
-    <div class="section_2 my-3 mx-2">
-      <div class="filter_search d-flex justify-content-between">
-        <div class="text-end">
-          <button class="btn btn-outline-info me-1"><i class="fa-solid
+    <div class="sub_main">
+        <div class="d-flex justify-content-end">
+            <h1 class="sec_title pb-1"> الحجوزات</h1>
+        </div>
+        <div *ngIf="reservations.length == 0" class="m-auto text-center">
+            <div class="d-flex justify-content-center align-content-center my-5">
+                <img src="/assets/images/main/invitation.png" width="200" alt="no brands" />
+            </div>
+            <p class="mt-2">🙃 لا يوجد حجوزات</p>
+        </div>
+        <div *ngIf="reservations.length > 0" class="section_2 my-3 mx-2">
+            <div class="filter_search d-flex justify-content-between">
+                <div class="text-end">
+                    <button class="btn btn-outline-info me-1"><i class="fa-solid
               fa-filter"></i></button>
-          <button class="btn btn-outline-dark ms-1"><i class="fa-solid fa-code"></i></button>
+                    <button class="btn btn-outline-dark ms-1"><i class="fa-solid fa-code"></i></button>
+                </div>
+                <div class="search w-50">
+                    <input type="search" class="form-control text-end" placeholder="إبحث هنا">
+                </div>
+            </div>
         </div>
-        <div class="search w-50">
-          <input type="search" class="form-control text-end" placeholder="إبحث هنا">
-        </div>
-      </div>
-    </div>
-    <div class="section_3 rounded">
-      <div class="table-responsive">
-        <table class="table table-hover table-borderless text-center text-end">
-          <thead>
-            <tr>
-              <th scope="col">الحالة</th>
-              <th scope="col">رقم الوحدة</th>
-              <th scope="col">رقم البطاقة الشخصية</th>
-              <th scope="col">الهاتف</th>
-              <th scope="col">الإسم</th>
-              <th scope="col">#</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let reversation of reservations | paginate: { id: 'reversationPagination',
+        <div *ngIf="reservations.length > 0" class="section_3 rounded">
+            <div class="table-responsive">
+                <table class="table table-hover table-borderless text-center text-end">
+                    <thead>
+                        <tr>
+                            <th scope="col">الحالة</th>
+                            <th scope="col">رقم الوحدة</th>
+                            <th scope="col">رقم البطاقة الشخصية</th>
+                            <th scope="col">الهاتف</th>
+                            <th scope="col">إسم الزائر</th>
+                            <th scope="col">#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let reversation of reservations | paginate: { id: 'reversationPagination',
             itemsPerPage: 10,
             currentPage: pReversation,
             totalItems: totalReversation }; let i= index " style="vertical-align: middle; cursor: pointer;">
-              <!-- <td *ngIf="reversation.approve == true">
+                            <!-- <td *ngIf="reversation.approve == true">
                 <button class="btn me-1 border-0">
                   <img src="/assets/images/invitaions/approved.png" width="35">
                 </button>
@@ -44,82 +49,89 @@
                   <img src="/assets/images/invitaions/rejected.png" width="35">
                 </button>
               </td> -->
-              <td >
-                <button class="btn me-1 border-0">
-                  <img src="/assets/images/invitaions/pending.png" width="35">
-                </button>
-              </td>
-              <td data-bs-toggle="modal" data-bs-target="#openInvition">
-                {{ reversation.unitName }}
-              </td>
-              <td data-bs-toggle="modal" data-bs-target="#openInvition"
-              class="text-primary">{{ reversation.sSN }}</td>
-              <td data-bs-toggle="modal" data-bs-target="#openInvition">{{ reversation.visitorPhone }}</td>
-              <td data-bs-toggle="modal" data-bs-target="#openInvition">{{ reversation.visitorName }}</td>
-              <th data-bs-toggle="modal" data-bs-target="#openInvition"
-              scope="row" data-bs-toggle="modal" data-bs-target="#openInvition">{{ i+1 }}</th>
-            </tr>
+                            <td>
+                                <button class="btn me-1 border-0">
+                                    <img src="/assets/images/invitaions/pending.png" width="35">
+                                </button>
+                            </td>
+                            <td data-bs-toggle="modal" data-bs-target="#openInvition" (click)="getReservation(reversation.id)">
+                                {{ reversation.unitName }}
+                            </td>
+                            <td data-bs-toggle="modal" data-bs-target="#openInvition" (click)="getReservation(reversation.id)" class="text-primary">{{ reversation.sSN }}</td>
+                            <td data-bs-toggle="modal" data-bs-target="#openInvition" (click)="getReservation(reversation.id)">{{ reversation.visitorPhone }}
+                            </td>
+                            <td data-bs-toggle="modal" data-bs-target="#openInvition" (click)="getReservation(reversation.id)">{{ reversation.visitorName }}</td>
+                            <th data-bs-toggle="modal" data-bs-target="#openInvition" (click)="getReservation(reversation.id)" scope="row" data-bs-toggle="modal" data-bs-target="#openInvition">{{ i+1 }}</th>
+                        </tr>
 
 
-          </tbody>
-        </table>
-      </div>
-      <!-- pagination -->
-      <div class="mx-auto text-center my-3 pb-3">
-        <pagination-controls id="usersPagination" (pageChange)="pageChangedReveration($event)" (pageBoundsCorrection)="pageChangedReveration($event)" [maxSize]="9" [directionLinks]="true"  [responsive]="true" previousLabel="Previous" nextLabel="Next">
-        </pagination-controls>
+                    </tbody>
+                </table>
+            </div>
+            <!-- pagination -->
+            <div class="mx-auto text-center my-3 pb-3">
+                <pagination-controls id="reversationPagination" (pageChange)="pageChangedReveration($event)" (pageBoundsCorrection)="pageChangedReveration($event)" [maxSize]="9" [directionLinks]="true" [responsive]="true" previousLabel="Previous" nextLabel="Next">
+                </pagination-controls>
+            </div>
+        </div>
     </div>
-    </div>
-  </div>
 </section>
 
 <!-- view invition modal -->
 
-<div class="modal fade" id="openInvition" tabindex="-1"
-  aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">عرض الدعوة</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"
-          aria-label="Close"></button>
-      </div>
-      <div class="modal-body text-end">
-        <div class="invite shadow rounded p-2">
-          <div class="client">
-            <h4 class="mt-1">معلومات المالك<img src="/assets/images/invitaions/key.png" class="ms-1" width="20"></h4>
-            <div class="d-flex flex-column mx-2">
-              <label class="ms-1"><span class="text-muted">moahmed</span> : الأسم</label>
-              <label class="ms-1"><span class="text-muted">test@google.com</span> : الإيميل</label>
-              <label class="ms-1"><span class="text-muted">0123456789</span> : الهاتف</label>
-              <label class="ms-1"><span class="text-muted">A 12</span>: رقم الوحدة </label>
+<div class="modal fade" id="openInvition" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close ms-1" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title" id="exampleModalLabel">عرض الدعوة</h5>
             </div>
+            <div class="modal-body text-end">
+                <div class="invite shadow rounded p-3">
+                    <div class="client">
+                        <h4 class="mt-2">معلومات المالك<img src="/assets/images/invitaions/key.png" class="ms-1" width="20"></h4>
+                        <div class="d-flex flex-column mx-2">
+                            <label class="ms-1"><span class="text-muted">{{ reservation?.ownerName }}</span> :
+                                الأسم</label>
+                            <label class="ms-1"><span class="text-muted">{{ reservation?.ownerEmail }}</span> :
+                                الإيميل</label>
+                            <label class="ms-1"><span class="text-muted">{{ reservation?.ownerPhone }}</span> :
+                                الهاتف</label>
+                            <label class="ms-1"><span class="text-muted">{{ reservation?.unitName }}</span>: رقم الوحدة
+                            </label>
+                        </div>
 
-          </div>
-          <div class="visitor">
-            <h4 class="mt-1">معلومات الزائر<img src="/assets/images/invitaions/visitor.png" class="ms-1" class="me-1" width="20"></h4>
-            <div class="d-flex flex-column mx-2">
-              <label class="ms-1"><span class="text-muted">ahmed</span> : الأسم</label>
-              <label class="ms-1"><span class="text-muted">0123456789</span> : الهاتف</label>
-              <label class="ms-1"> <span
-                  class="text-muted">625 432 102 15467</span> : رقم البطاقة الشخصية</label>
+                    </div>
+                    <div class="visitor">
+                        <h4 class="mt-2">معلومات الزائر<img src="/assets/images/invitaions/visitor.png" class="ms-1" class="me-1" width="20"></h4>
+                        <div class="d-flex flex-column mx-2">
+                            <label class="ms-1"><span class="text-muted">{{ reservation?.visitorName }}</span> :
+                                الأسم</label>
+                            <label class="ms-1"><span class="text-muted">{{ reservation?.visitorPhone }}</span> :
+                                الهاتف</label>
+                            <label class="ms-1"> <span class="text-muted">{{ reservation?.visitorIdentifer }}</span> :
+                                رقم البطاقة
+                                الشخصية</label>
+                        </div>
+
+                    </div>
+                    <div class="visit_info">
+                        <h4 class="mt-2">معلومات الزيارة<img src="/assets/images/invitaions/invitation.png" class="ms-1" class="me-1" width="20"></h4>
+                        <div class="d-flex flex-column mx-2">
+                            <label class="ms-1"><span class="text-muted">{{ reservation?.startDate | date:"yyyy-MM-dd"
+                                    }}</span> : تبدأ
+                                في</label>
+                            <label class="ms-1"><span class="text-muted">{{ reservation?.endDate | date:"yyyy-MM-dd"
+                                    }}</span> : تنتهي
+                                عند</label>
+                        </div>
+
+                    </div>
+                </div>
             </div>
-
-          </div>
-          <div class="visit_info">
-            <h4 class="mt-1">معلومات الزيارة<img src="/assets/images/invitaions/invitation.png" class="ms-1" class="me-1" width="20"></h4>
-            <div class="d-flex flex-column mx-2">
-              <label class="ms-1"><span class="text-muted">2022-10-10</span> : تبدأ في</label>
-              <label class="ms-1"><span class="text-muted">2022-10-25</span> : تنتهي عند</label>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">اغلاق</button>
             </div>
-
-          </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-danger"
-          data-bs-dismiss="modal">اغلاق</button>
-      </div>
     </div>
-  </div>
 </div>

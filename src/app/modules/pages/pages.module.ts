@@ -27,11 +27,11 @@ import { AccountComponent } from './account/account.component';
 
   ],
   imports: [
-  CommonModule,
-  HttpClientModule,
-  SharedModule,
-  PagesRoutingModule,
-  LayoutModule
+    CommonModule,
+    HttpClientModule,
+    SharedModule,
+    PagesRoutingModule,
+    LayoutModule
   ]
 })
 export class PagesModule { }

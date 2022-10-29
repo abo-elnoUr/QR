@@ -9,13 +9,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
 
+import { LoaderComponent } from './modules/pages/loader/loader.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoaderInterceptor } from './core/interceptor/loader.interceptor';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoaderComponent
   ],
   imports: [
-  BrowserModule,
+    BrowserModule,
     AppRoutingModule,
     AuthModule,
     SharedModule,
@@ -30,7 +35,13 @@ import { AuthModule } from './auth/auth.module';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

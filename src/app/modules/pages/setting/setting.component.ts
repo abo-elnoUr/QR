@@ -138,10 +138,10 @@ export class SettingComponent implements OnInit {
     this.getUnits()
   }
 
-   // ************************* Users ****************************
+  // ************************* Users ****************************
 
   //  get all users
-  getUsers(){
+  getUsers() {
     this._UserService.getUsers().subscribe({
       next: (users) => {
         this.users = users
@@ -209,6 +209,22 @@ export class SettingComponent implements OnInit {
 
   }
 
+  // get user by id
+  getUser(id: string) {
+    this._UserService.getUser(id).subscribe({
+      next: (user) => {
+        this.editUserForm.patchValue({
+          firstName: user.firstName,
+          lastName: user.lastName,
+          userName: user.userName,
+          phone: user.phone,
+          address: user.address,
+          email: user.email
+        })
+      }
+    })
+  }
+
 
   // edit user
   editUser() {
@@ -216,17 +232,17 @@ export class SettingComponent implements OnInit {
   }
 
   // delete user
-  deleteUser(id: string){
+  deleteUser(id: string) {
 
   }
 
   // ************************* owners ****************************
 
   // add unit
-  addUnit(){
+  addUnit() {
     this._UserService.addUnit(this.addUnitForm.value).subscribe({
       next: (added) => {
-        this._ToastrService.success('unit added 💛')
+        this._ToastrService.success('💛 تم إضافة وحدة جديدة ')
         this.addUnitForm.reset()
         this.getUnits()
       },
@@ -251,7 +267,7 @@ export class SettingComponent implements OnInit {
   }
 
   // get all units
-  getUnits(){
+  getUnits() {
     this._UserService.getUnits().subscribe({
       next: (units) => {
         this.units = units
@@ -277,7 +293,7 @@ export class SettingComponent implements OnInit {
   }
 
   // get unit by id
-  getUnit(id: any){
+  getUnit(id: any) {
     this._UserService.getUnit(id).subscribe({
       next: (unit) => {
         this.unitId = unit.id
@@ -286,14 +302,14 @@ export class SettingComponent implements OnInit {
           phone: unit.phone,
         })
       },
-      error: (error) =>{
+      error: (error) => {
         this._ToastrService.error('😭 حدث خطأ ');
       }
     })
   }
 
   // edit unit
-  editUnit(){
+  editUnit() {
     this._UserService.updateUnit(this.editUnitForm.value, this.unitId).subscribe({
       next: (updated) => {
         this._ToastrService.info('👏 تم التعديل ')
@@ -321,7 +337,7 @@ export class SettingComponent implements OnInit {
   }
 
   // delete unit
-  deleteUnit(id: any){
+  deleteUnit(id: any) {
     this._UserService.deleteUnit(id).subscribe({
       next: (next) => {
         this._ToastrService.error('😭 تم الحذف ')
