@@ -12,8 +12,8 @@ import { environment } from 'src/environments/environment';
 })
 export class UserService {
 
-  apiUrl = 'http://192.168.1.254:5214/api/'
-  // apiUrl = environment.smarterUrl
+  // apiUrl = 'http://192.168.1.254:5214/api/'
+  apiUrl = environment.smarterUrl
 
 
   constructor(private _HttpClient: HttpClient) { }

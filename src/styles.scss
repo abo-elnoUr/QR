@@ -1,28 +1,29 @@
-body{
-  margin: 0;
+body {
+    margin: 0;
 }
 
-@import '/src/assets/style/variable.scss';
+@import "/src/assets/style/variable.scss";
 
 /*  Fonts */
+
 @import "_fonts.css";
 * {
     font-family: "Cairo";
 }
 
+
 /* Scrollbar Styling */
 
 ::-webkit-scrollbar {
-  width: 5px;
+    width: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #ebebeb;
-  border-radius: 10px;
+    background-color: #ebebeb;
+    border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background: #1da1f2;
+    border-radius: 10px;
+    background: #1da1f2;
 }
-

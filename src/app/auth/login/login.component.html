@@ -19,7 +19,7 @@
             </div>
             <div class="mx-auto text-center">
                 <button class="btn btn-outline-primary mt-3" [disabled]="loginForm.invalid" (click)="onLogin()"><i
-            class="fa-solid fa-arrow-right-to-bracket me-1"></i>تسجيل الدخول</button>
+                        class="fa-solid fa-arrow-right-to-bracket me-1"></i>تسجيل الدخول</button>
             </div>
         </form>
     </div>
@@ -44,14 +44,14 @@
                         <app-input [control]="forgetForm.get('email')" [id]="'forget-email'" [class]="'form-control text-end'" [type]="'email'" [placeholder]="'ادخل الايميل'">
                         </app-input>
                     </div>
-                    <div class="wait">
+                    <div class="wait" *ngIf="resetAgain">
                         <p class="text-muted pt-2">
-                            يرجي الإنتظار {{ '45' }} قبل طلب كود جديد
+                            يرجي الإنتظار {{ timeLeft }} قبل طلب كود جديد
                         </p>
                     </div>
                     <div class="mx-auto text-center">
-                        <button class="btn btn-outline-primary mt-3" [disabled]="forgetForm.invalid || resetAgain == false" (click)="forgetPassword()"><i
-                class="fa-regular fa-paper-plane me-1"></i>إرسال</button>
+                        <button class="btn btn-outline-primary mt-3" [disabled]="forgetForm.invalid" (click)="forgetPassword();startTimer()"><i
+                                class="fa-regular fa-paper-plane me-1"></i>إرسال</button>
                     </div>
                 </form>
             </div>

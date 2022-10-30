@@ -16,7 +16,10 @@ export class LoginComponent implements OnInit {
   token = localStorage.getItem('qrToken')
   loginForm: FormGroup
   forgetForm: FormGroup
-  resetAgain:boolean =  false
+  resetAgain: boolean = false
+  timeLeft: number = 60;
+  interval: any
+
 
   constructor(private _AuthService: AuthService, private _FormBuilder: FormBuilder, private _Router: Router, private _ToastrService: ToastrService) {
     if (this.token) {
@@ -111,28 +114,21 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  //    forgetTimer(duration: any, display: any) {
-  //     var timer = duration, minutes, seconds ;
-  //     setInterval(function () {
-  //         minutes = parseInt(timer / 60, 10);
-  //         seconds = parseInt(timer % 60, 10);
+  startTimer() {
+    if (this.resetAgain == true) {
+      this.interval = setInterval(() => {
+        if (this.timeLeft > 0) {
+          this.timeLeft--;
+        } else {
+          this.timeLeft = 60;
+        }
+      }, 1000)
+    }
+    if (this.timeLeft == 0) {
+      this.resetAgain == false
+    }
 
-  //         minutes = minutes < 10 ? "0" + minutes : minutes;
-  //         seconds = seconds < 10 ? "0" + seconds : seconds;
-
-  //         display.textContent = minutes + ":" + seconds;
-
-  //         if (--timer < 0) {
-  //             timer = duration;
-  //         }
-  //     }, 1000);
-  // }
-
-  // window.onload = function () {
-  //     var fiveMinutes = 60 * 5,
-  //         display = document.querySelector('#time');
-  //     startTimer(fiveMinutes, display);
-  // };
+  }
 
 
 
