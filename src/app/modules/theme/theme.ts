@@ -6,7 +6,7 @@ export interface Theme {
 export const light: Theme = {
   name: "light",
   properties: {
-  "--app-container": "#f3f6fd",
+  "--app-container": "#fff1f1",
   "--main-color": "#1f1c2e",
   "--secondary-color": "#4A4A4A",
   "--link-color": "#1f1c2e",

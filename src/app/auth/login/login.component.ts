@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
+// import { setInterval } from 'timers';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
   token = localStorage.getItem('qrToken')
   loginForm: FormGroup
   forgetForm: FormGroup
+  resetAgain:boolean =  false
 
   constructor(private _AuthService: AuthService, private _FormBuilder: FormBuilder, private _Router: Router, private _ToastrService: ToastrService) {
     if (this.token) {
@@ -85,6 +87,9 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('forgetToken', send.token)
         localStorage.setItem('forgetEmail', send.email)
         this._Router.navigate(['/resetPassword'])
+        setInterval(() => {
+          this.resetAgain = true
+        }, 5000)
       },
       error: (error) => {
         switch (error.status) {
@@ -128,6 +133,8 @@ export class LoginComponent implements OnInit {
   //         display = document.querySelector('#time');
   //     startTimer(fiveMinutes, display);
   // };
+
+
 
 
 }

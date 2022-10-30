@@ -50,7 +50,7 @@
                         </p>
                     </div>
                     <div class="mx-auto text-center">
-                        <button class="btn btn-outline-primary mt-3" [disabled]="forgetForm.invalid" (click)="forgetPassword()"><i
+                        <button class="btn btn-outline-primary mt-3" [disabled]="forgetForm.invalid || resetAgain == false" (click)="forgetPassword()"><i
                 class="fa-regular fa-paper-plane me-1"></i>إرسال</button>
                     </div>
                 </form>

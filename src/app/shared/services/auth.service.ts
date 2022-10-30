@@ -11,8 +11,8 @@ import { User } from './../models/user';
 })
 export class AuthService {
 
-  // apiUrl = 'http://192.168.1.254:5214/api/'
-  apiUrl = environment.smarterUrl
+  apiUrl = 'http://192.168.1.254:5214/api/'
+  // apiUrl = environment.smarterUrl
   isLogin: boolean = false
 
   constructor(private _HttpClient: HttpClient) { }

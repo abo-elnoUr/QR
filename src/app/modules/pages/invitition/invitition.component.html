@@ -31,6 +31,7 @@
                             <th scope="col">رقم البطاقة الشخصية</th>
                             <th scope="col">الهاتف</th>
                             <th scope="col">إسم الزائر</th>
+                            <th scope="col">إسم المالك</th>
                             <th scope="col">#</th>
                         </tr>
                     </thead>
@@ -61,6 +62,7 @@
                             <td data-bs-toggle="modal" data-bs-target="#openInvition" (click)="getReservation(reversation.id)">{{ reversation.visitorPhone }}
                             </td>
                             <td data-bs-toggle="modal" data-bs-target="#openInvition" (click)="getReservation(reversation.id)">{{ reversation.visitorName }}</td>
+                            <td data-bs-toggle="modal" data-bs-target="#openInvition" (click)="getReservation(reversation.id)">{{ reversation.ownerName }}</td>
                             <th data-bs-toggle="modal" data-bs-target="#openInvition" (click)="getReservation(reversation.id)" scope="row" data-bs-toggle="modal" data-bs-target="#openInvition">{{ i+1 }}</th>
                         </tr>
 
@@ -90,7 +92,7 @@
                 <div class="invite shadow rounded p-3">
                     <div class="client">
                         <h4 class="mt-2">معلومات المالك<img src="/assets/images/invitaions/key.png" class="ms-1" width="20"></h4>
-                        <div class="d-flex flex-column mx-2">
+                        <div class="d-flex flex-column mx-2 ">
                             <label class="ms-1"><span class="text-muted">{{ reservation?.ownerName }}</span> :
                                 الأسم</label>
                             <label class="ms-1"><span class="text-muted">{{ reservation?.ownerEmail }}</span> :
