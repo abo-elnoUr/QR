@@ -18,7 +18,7 @@
                 <a routerLink="" data-bs-toggle="modal" data-bs-target="#forgetPassword">هل نسيت الرقم السري</a>
             </div>
             <div class="mx-auto text-center">
-                <button class="btn btn-outline-primary mt-3" [disabled]="loginForm.invalid" (click)="onLogin()"><i
+                <button class="btn btn-outline-primary mt-3" [disabled]="loginForm.invalid"  (click)="onLogin()"><i
                         class="fa-solid fa-arrow-right-to-bracket me-1"></i>تسجيل الدخول</button>
             </div>
         </form>
@@ -44,13 +44,13 @@
                         <app-input [control]="forgetForm.get('email')" [id]="'forget-email'" [class]="'form-control text-end'" [type]="'email'" [placeholder]="'ادخل الايميل'">
                         </app-input>
                     </div>
-                    <div class="wait" *ngIf="resetAgain">
+                    <div class="wait" >
                         <p class="text-muted pt-2">
-                            يرجي الإنتظار {{ timeLeft }} قبل طلب كود جديد
+                            يرجي الإنتظار {{ timer }} قبل طلب كود جديد
                         </p>
                     </div>
                     <div class="mx-auto text-center">
-                        <button class="btn btn-outline-primary mt-3" [disabled]="forgetForm.invalid" (click)="forgetPassword();startTimer()"><i
+                        <button class="btn btn-outline-primary mt-3" data-bs-dismiss="modal" [disabled]="forgetForm.invalid" (click)="forgetPassword()"><i
                                 class="fa-regular fa-paper-plane me-1"></i>إرسال</button>
                     </div>
                 </form>

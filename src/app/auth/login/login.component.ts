@@ -17,8 +17,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup
   forgetForm: FormGroup
   resetAgain: boolean = false
-  timeLeft: number = 60;
-  interval: any
+  timer: number = 0
 
 
   constructor(private _AuthService: AuthService, private _FormBuilder: FormBuilder, private _Router: Router, private _ToastrService: ToastrService) {
@@ -90,9 +89,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('forgetToken', send.token)
         localStorage.setItem('forgetEmail', send.email)
         this._Router.navigate(['/resetPassword'])
-        setInterval(() => {
-          this.resetAgain = true
-        }, 5000)
+
       },
       error: (error) => {
         switch (error.status) {
@@ -112,22 +109,6 @@ export class LoginComponent implements OnInit {
         }
       }
     })
-  }
-
-  startTimer() {
-    if (this.resetAgain == true) {
-      this.interval = setInterval(() => {
-        if (this.timeLeft > 0) {
-          this.timeLeft--;
-        } else {
-          this.timeLeft = 60;
-        }
-      }, 1000)
-    }
-    if (this.timeLeft == 0) {
-      this.resetAgain == false
-    }
-
   }
 
 

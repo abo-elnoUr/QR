@@ -1,4 +1,58 @@
-.main{
+// .main{
+//   position: fixed;
+//   right: 0;
+//   top: 0;
+//   margin-top: 20px;
+//   height: 100%;
+//   width: auto;
+//   padding-top: 2rem;
+//   background-color: var(--app-container);
+//   // z-index: 9;
+// }
+// .app-sidebar {
+//   position: relative;
+//   padding: 40px 16px;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+
+
+//   &-link {
+//     color: var(--main-color);
+//     color: var(--link-color);
+//     margin: 16px 0;
+//     transition: .2s;
+//     border-radius: 50%;
+//     flex-shrink: 0;
+//     width: 40px;
+//     height: 40px;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+
+//     &:hover {
+//       background-color: var(--link-color-hover);
+//       color: var(--link-color-active);
+//     }
+
+
+//     &.active {
+//       background-color: var(--link-color-active-bg);
+//       color: var(--link-color-active);
+//     }
+//   }
+
+
+//   .showDrop{
+//     position: absolute;
+//     right: 100%;
+//     bottom: 0%;
+//     background: red;
+//     display: none;
+//   }
+// }
+
+.main {
   position: fixed;
   right: 0;
   top: 0;
@@ -7,36 +61,62 @@
   width: auto;
   padding-top: 2rem;
   background-color: var(--app-container);
-  // z-index: 9;
 }
 .app-sidebar {
+  position: relative;
   padding: 40px 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  &-link {
-    color: var(--main-color);
-    color: var(--link-color);
-    margin: 16px 0;
-    transition: .2s;
-    border-radius: 50%;
-    flex-shrink: 0;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    &:hover {
-      background-color: var(--link-color-hover);
-      color: var(--link-color-active);
-    }
-
-    &.active {
-      background-color: var(--link-color-active-bg);
-      color: var(--link-color-active);
-    }
-  }
+}
+.app-sidebar-link {
+  color: var(--main-color);
+  color: var(--link-color);
+  margin: 16px 0;
+  transition: 0.2s;
+  border-radius: 50%;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.app-sidebar-link:hover {
+  background-color: var(--link-color-hover);
+  color: var(--link-color-active);
 }
 
+.app-sidebar-link.active {
+  background-color: var(--link-color-active-bg);
+  color: var(--link-color-active);
+}
+.app-sidebar .showDrop {
+  position: absolute;
+  right: 80%;
+  bottom: 5%;
+  background: #fff;
+  transition: all .2s linear;
+  display: none;
+}
+
+.app-sidebar .showDrop ul li:hover{
+  background: #ccc;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+
+
+.app-sidebar span:hover .showDrop{
+  display: block;
+}
+
+.app-sidebar .showDrop ul li{
+  width: max-content;
+  background: #66aff0;
+  padding: 2px 10px;
+}
+
+.app-sidebar .showDrop ul li a{
+  color: #fff !important;
+}

@@ -1,0 +1,137 @@
+<section class="main">
+  <div class="sub_main">
+    <div class="d-flex justify-content-end">
+      <h1 class="sec_title pb-2">الإعدادات</h1>
+  </div>
+    <div class="owners">
+  <div class="d-flex justify-content-center py-5">
+      <h3 class="owners-title p-0 m-0">الوحدات</h3>
+  </div>
+  <div class="text-end my-3">
+      <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addUnit"><i
+              class="fa-solid fa-warehouse me-2"></i>إضافة
+          وحدة</button>
+  </div>
+  <div *ngIf="units.length == 0" class="m-auto text-center">
+      <div class="d-flex justify-content-center align-content-center my-5">
+          <img src="/assets/images/main/list.png" width="200" alt="no brands" />
+      </div>
+      <p class="mt-2">🙃 لا يوجد وحدات</p>
+  </div>
+  <div *ngIf="units.length > 0" class="section_3 rounded pb-3">
+      <div class="table-responsive" style="min-height: 300px;">
+          <table class="table table-hover table-borderless text-center
+  caption-top text-end">
+              <caption class="me-4 text-end">قائمة الوحدات <i class="fa-solid
+      fa-users ms-2"></i></caption>
+              <thead>
+                  <tr>
+                      <th scope="col">عمليات</th>
+                      <th scope="col">الهاتف</th>
+                      <th scope="col">الإسم</th>
+                      <th scope="col">#</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let unit of units | paginate: { id: 'unitsPagination',
+      itemsPerPage: 5,
+      currentPage: p,
+      totalItems: total }; let i= index" style="vertical-align:
+      middle; cursor: pointer;">
+                      <td>
+                          <button class="btn me-1 border-0" (click)="deleteUnit(unit.id)">
+                              <img src="/assets/images/main/delete.png" width="30">
+                          </button>
+                          <button class="btn me-1 border-0" (click)="getUnit(unit.id)" data-bs-toggle="modal" data-bs-target="#editUnit">
+                              <img src="/assets/images/main/edit.png" width="30">
+                          </button>
+                      </td>
+                      <td>{{ unit.phone }}</td>
+                      <td>{{ unit.name }}</td>
+                      <th scope="row">{{ i+1 }}</th>
+                  </tr>
+
+              </tbody>
+          </table>
+      </div>
+
+       <!-- pagination -->
+       <div class="mx-auto text-center my-3">
+         <pagination-controls id="unitsPagination" (pageChange)="pageChanged($event)" (pageBoundsCorrection)="pageChanged($event)" [maxSize]="9" [directionLinks]="true" [responsive]="true" previousLabel="Previous" nextLabel="Next">
+        </pagination-controls>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- add unit modal -->
+
+<div class="modal fade" id="addUnit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="btn-close ms-0" data-bs-dismiss="modal" aria-label="Close"></button>
+              <h5 class="modal-title " id="exampleModalLabel">إضافة</h5>
+          </div>
+          <div class="modal-body text-end">
+              <h3 class="mb-1 text-center">إضافة وحدة</h3>
+              <form [formGroup]="addUnitForm">
+                  <div class="form-group">
+                      <label>اسم الوحدة</label>
+                      <app-input [control]="addUnitForm.get('name')" [id]="'add-name'" [class]="'form-control mb-2 text-end'" [type]="'text'" [placeholder]="'ادخل اسم الوحده'">
+                      </app-input>
+                  </div>
+                  <div class="form-group">
+                      <label>الهاتف</label>
+                      <app-input [control]="addUnitForm.get('phone')" [id]="'add-phoneUnit'" [class]="'form-control mb-2 text-end'" [type]="'number'" [placeholder]="'الهاتف'">
+                      </app-input>
+                  </div>
+                  <div class="text-center">
+                      <button class="btn btn-outline-primary" [disabled]="addUnitForm.invalid" (click)="addUnit()"><i
+                              class="fa-solid fa-hotel me-1"></i>إضافة</button>
+                  </div>
+              </form>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-outline-danger " data-bs-dismiss="modal">اغلاق</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- edit unit modal -->
+
+<div class="modal fade" id="editUnit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="btn-close ms-0" data-bs-dismiss="modal" aria-label="Close"></button>
+              <h5 class="modal-title " id="exampleModalLabel">تعديل</h5>
+          </div>
+          <div class="modal-body text-end">
+              <h3 class="mb-1 text-center">تعديل وحدة</h3>
+              <form [formGroup]="editUnitForm">
+                  <div class="form-group">
+                      <label>اسم الوحدة</label>
+                      <app-input [control]="editUnitForm.get('name')" [id]="'edit-name'" [class]="'form-control mb-2 text-end'" [type]="'text'" [placeholder]="'ادخل اسم الوحده'">
+                      </app-input>
+                  </div>
+                  <div class="form-group">
+                      <label>الهاتف</label>
+                      <app-input [control]="editUnitForm.get('phone')" [id]="'edit-phoneUnit'" [class]="'form-control mb-2 text-end'" [type]="'number'" [placeholder]="'الهاتف'">
+                      </app-input>
+                  </div>
+                  <div class="text-center">
+                      <button class="btn btn-outline-info" [disabled]="editUnitForm.invalid" (click)="editUnit()"><i
+                              class="fa-solid fa-pen me-1"></i>تعديل</button>
+                  </div>
+              </form>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-outline-danger " data-bs-dismiss="modal">اغلاق</button>
+          </div>
+      </div>
+  </div>
+</div>

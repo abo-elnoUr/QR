@@ -3,91 +3,47 @@
 }
 
 .main {
-  // height: 100vh;
   padding: 20px;
   background: rgb(255, 241, 241);
+  height: 92vh;
 }
 
 .sub_main {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) ;
+  gap: 20px;
   background: #fff;
   border-radius: 8px;
-  padding: 10px;
+  padding: 20px;
+  height: 70vh;
 }
 
-.sec_title {
-  position: relative;
-  width: fit-content;
-  color: #444;
+.main .sub_main .card_mine{
+  height: max-content;
+  align-self: center;
+  cursor: pointer;
+  transition: .3s all linear;
 }
 
-.sec_title::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  height: 3px;
-  width: 40%;
-  border-radius: 4px;
-  background: #666;
+.main .sub_main .card_mine:hover {
+  transform: translateY(-5px);
 }
 
-.users-title{
-  position: relative;
-  width: fit-content;
-  color: #555;
+.main .sub_main .card_mine h3 a{
+  color: #666 !important;
 }
 
-.users-title::after{
-  content: '';
-  position: absolute;
-  top: 50%;
-  right: calc(100% + 20px);
-  width: 100px;
-  height: 4px;
-  border-radius: 4px;
-  background: #777;
+.main .sub_main .card_mine:hover h3 a{
+  color: #111 !important;
 }
 
-.users-title::before{
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: calc(100% + 20px);
-  width: 100px;
-  height: 4px;
-  border-radius: 4px;
-  background: #777;
+.main .sub_main .card_mine:hover{
+  box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 1), inset 3px 3px 5px rgba(0, 0, 0, 0.1) !important;
 }
 
-.owners-title{
-  position: relative;
-  // width: fit-content;
-  color: #555;
+@media screen and (max-width: 767px) {
+  .sub_main {
+    grid-template-columns: 1fr;
+  }
 }
 
-.owners-title::after{
-  content: '';
-  position: absolute;
-  top: 50%;
-  right: calc(100% + 20px);
-  width: 100px;
-  height: 3px;
-  border-radius: 4px;
-  background: #777;
-}
-
-.owners-title::before{
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: calc(100% + 20px);
-  width: 100px;
-  height: 3px;
-  border-radius: 4px;
-  background: #777;
-}
-
-.section_3{
-  margin-top: 30px;
-  box-shadow: -2px -2px 5px rgba(255, 255, 255, 1), 3px 3px 5px rgba(0, 0, 0, 0.1);
-}
