@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './../../core/guard/auth.guard';
+import { AdminGuard } from 'src/app/core/guard/admin.guard';
 
 import { MainComponent } from '../layout/main/main.component';
 import { HomeComponent } from './home/home.component';
@@ -17,10 +18,10 @@ const routes: Routes = [
     component: MainComponent,
     children: [
       { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-      { path: 'setting', component: SettingComponent, canActivate: [AuthGuard] },
-      { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
-      { path: 'unit', component: UnitComponent, canActivate: [AuthGuard] },
-      { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+      { path: 'setting', component: SettingComponent, canActivate: [AuthGuard, AdminGuard] },
+      { path: 'user', component: UserComponent, canActivate: [AuthGuard, AdminGuard] },
+      { path: 'unit', component: UnitComponent, canActivate: [AuthGuard, AdminGuard] },
+      { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard, AdminGuard] },
       { path: 'invitition', component: InvititionComponent, canActivate: [AuthGuard] },
       { path: 'account', component: AccountComponent, canActivate: [AuthGuard] }
     ],

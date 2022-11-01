@@ -7,7 +7,7 @@ export interface Reservation {
   ownerName: string;
   ownerPhone: string;
   ownerEmail: string;
-  approve: boolean;
+  approve: number;
   startDate: string;
   endDate: string;
   visitorIdentifer: string;

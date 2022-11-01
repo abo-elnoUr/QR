@@ -3,7 +3,7 @@
 }
 
 .main {
-    height: 100vh;
+    // height: 90vh;
     padding: 20px;
     background: rgb(255, 241, 241);
 }
@@ -11,7 +11,7 @@
 .sub_main {
     background: #fff;
     border-radius: 8px;
-    padding: 10px;
+    padding: 20px;
 }
 
 .card_mine {
@@ -21,6 +21,13 @@
 
 .card_mine:hover {
     box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 1), inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+    animation: bounce .5s linear infinite;
+    animation-direction: alternate;
+}
+
+@keyframes bounce {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-25px); }
 }
 
 .statistic {
@@ -66,4 +73,15 @@
   min-height: 120px;
   overflow-x: hidden;
   overflow-y: auto;
+}
+
+.active_user{
+  display: block;
+}
+
+
+@media screen and (max-width: 580px) {
+    .topUser{
+      display: none;
+    }
 }

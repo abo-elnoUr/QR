@@ -11,79 +11,52 @@
             <h2 class="pb-2 statistic ">الإحصائيات</h2>
           </div>
             <div class="row mx-2" style="gap: 20px;">
-                <div class="col  card_mine d-flex justify-content-between p-2 rounded mb-2 text-end">
+                <div style="background-color: #fee4cb;" class="col  card_mine d-flex justify-content-evenly py-5 rounded px-0 text-end">
                   <div class="statistics text-center ">
-                    <span class="text-success pb-4"><i class="fa-solid fa-arrow-trend-up"></i></span>
-                    <h4 class="text-success pt-2">$320</h4>
-                    <div class="text-muted">أخر 6 شهور</div>
+                    <h4 class="text-success pt-2 fs-3">{{ counts?.ownerCount }}</h4>
+                    <div class="text-muted">مالك</div>
                 </div>
-                    <div class="parent">
-                        <div class="title">
-                            <h3><i class="fa-regular fa-circle-check me-2 text-primary"></i>محمد</h3>
-                            <p class="text-muted my-1">مطور الواجهة الامامية</p>
-                        </div>
-                        <div class="rate pb-1">
-                          <span><i class="fa-solid fa-minus text-secondary ms-1 fs-4"></i></span>
-                            <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
-                            <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
-                            <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
+                    <div class="parent d-grid">
+                        <div class="title align-self-center">
+                            <h3 class="text-dark"><i class="fa-solid fa-crown me-2"></i>المالكين</h3>
+                            <p class="text-muted my-1 text-center">^_^</p>
                         </div>
                     </div>
                 </div>
-                <div class="col  card_mine d-flex justify-content-between p-2 rounded mb-2 text-end">
+                <div style="background-color: #e9e7fd;" class="col  card_mine d-flex justify-content-evenly py-5 rounded px-0 text-end">
                   <div class="statistics text-center ">
-                    <span class="text-success pb-4"><i class="fa-solid fa-arrow-trend-up"></i></span>
-                    <h4 class="text-success pt-2">$320</h4>
-                    <div class="text-muted">أخر 6 شهور</div>
+                    <h4 class="text-success pt-2 fs-3">{{ counts?.userCount }}</h4>
+                    <div class="text-muted">مستخدم</div>
                 </div>
-                    <div class="parent">
-                        <div class="title">
-                            <h3><i class="fa-regular fa-circle-check me-2 text-primary"></i>محمد</h3>
-                            <p class="text-muted my-1">مطور الواجهة الامامية</p>
+                    <div class="parent d-grid">
+                        <div class="title align-self-center">
+                            <h3 class="text-dark"><i class="fa-solid fa-user-tie me-2"></i>المستخدمين</h3>
+                            <p class="text-muted my-1 text-center">^_^</p>
                         </div>
-                        <div class="rate pb-1">
-                          <span><i class="fa-solid fa-minus text-secondary ms-1 fs-4"></i></span>
-                            <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
-                            <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
-                            <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
+
+                    </div>
+                </div>
+                <div style="background-color: #dbf6fd;" class="col  card_mine d-flex justify-content-evenly py-5 rounded px-0 text-end">
+                  <div class="statistics text-center ">
+                    <h4 class="text-success pt-2 fs-3">{{ counts?.invitationCount }}</h4>
+                    <div class="text-muted">دعوة</div>
+                </div>
+                    <div class="parent d-grid">
+                        <div class="title align-self-center">
+                            <h3 class="text-dark"><i class="fa-solid fa-calendar-days me-2"></i>الحجوزات</h3>
+                            <p class="text-muted my-1 text-center">^_^</p>
                         </div>
                     </div>
                 </div>
-                <div class="col  card_mine d-flex justify-content-between p-2 rounded mb-2 text-end">
+                <div style="background-color: #ffd3e2;" class="col  card_mine d-flex justify-content-evenly py-5 rounded px-0 text-end">
                   <div class="statistics text-center ">
-                    <span class="text-success pb-4"><i class="fa-solid fa-arrow-trend-up"></i></span>
-                    <h4 class="text-success pt-2">$320</h4>
-                    <div class="text-muted">أخر 6 شهور</div>
+                    <h4 class="text-success pt-2 fs-3">{{ counts?.unitCount }}</h4>
+                    <div class="text-muted">وحدة</div>
                 </div>
-                    <div class="parent">
-                        <div class="title">
-                            <h3><i class="fa-regular fa-circle-check me-2 text-primary"></i>محمد</h3>
-                            <p class="text-muted my-1">مطور الواجهة الامامية</p>
-                        </div>
-                        <div class="rate pb-1">
-                          <span><i class="fa-solid fa-minus text-secondary ms-1 fs-4"></i></span>
-                            <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
-                            <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
-                            <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col  card_mine d-flex justify-content-between p-2 rounded mb-2 text-end">
-                  <div class="statistics text-center ">
-                    <span class="text-success pb-4"><i class="fa-solid fa-arrow-trend-up"></i></span>
-                    <h4 class="text-success pt-2">$320</h4>
-                    <div class="text-muted">أخر 6 شهور</div>
-                </div>
-                    <div class="parent">
-                        <div class="title">
-                            <h3><i class="fa-regular fa-circle-check me-2 text-primary"></i>محمد</h3>
-                            <p class="text-muted my-1">مطور الواجهة الامامية</p>
-                        </div>
-                        <div class="rate pb-1">
-                          <span><i class="fa-solid fa-minus text-secondary ms-1 fs-4"></i></span>
-                            <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
-                            <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
-                            <span><i class="fa-solid fa-minus text-primary ms-1 fs-4"></i></span>
+                    <div class="parent d-grid">
+                        <div class="title align-self-center">
+                            <h3 class="text-dark"><i class="fa-solid fa-warehouse me-2"></i>الوحدات</h3>
+                            <p class="text-muted my-1 text-center">^_^</p>
                         </div>
                     </div>
                 </div>
@@ -91,24 +64,36 @@
             </div>
         </div>
         <div class="section_2 text-end">
-          <div>
+          <!-- <div>
 
-          </div>
+          </div> -->
           <div class="text-end d-flex justify-content-end mb-4">
             <h2 class="py-2 activity">نشاطات</h2>
           </div>
             <div class="row d-flex justify-content-between my-2 rounded mb-2 mx-2" style="gap: 20px;">
               <div class="col p-2 rounded mb-2 topUser">
-                <h3 class="mb-2">أعلي المستخدمين</h3>
+                <h3 class="mb-2"> المستخدمين</h3>
                 <div class="scroll_content">
-                  <ul class="list-group list-group-flush ">
+                  <div class="">
+                    <ul class="list-group list-group-flush ">
                     <li class="list-group-item d-flex text-center justify-align-center">
                       <div class="currency col-3">
-                        <h5 class="text-secondary">+$5.965</h5>
+                        <h5>الهاتف</h5>
                       </div>
                       <div class="info col-6">
-                        <h4>أصفر</h4>
-                        <p class="mb-0 text-muted">الادمن</p>
+                        <h5>الأسم</h5>
+                      </div>
+                      <div class="image col-3">
+                          <h5>الصورة</h5>
+                      </div>
+                    </li>
+                    <li class="list-group-item mt-2 d-flex text-center justify-align-center">
+                      <div class="currency col-3">
+                        <h5 class="text-secondary">{{ user?.phone }}</h5>
+                      </div>
+                      <div class="info col-6">
+                        <h4> <p class="mb-0 text-muted fs-6 d-inline">مستخدم</p> {{ ' | ' + user?.userName   }}</h4>
+
                       </div>
                       <div class="image col-3">
                           <img src="/assets/images/dashboard/man.png" width="50">
@@ -116,38 +101,45 @@
                     </li>
 
                 </ul>
+                  </div>
+
                 </div>
             </div>
                 <div class="col p-2 rounded mb-2 summary text-end">
-                  <h3 class="mb-2">ملخص عن المالكين</h3>
+                  <h3 class="mb-2"> الدعوات </h3>
                     <div class="table-responsive">
                         <table class="table table-hover table-borderless text-center ">
                             <thead>
-                                <tr>
-                                  <th scope="col" class="text-end">الحالة</th>
-                                  <th scope="col">الهاتف</th>
-                                  <th scope="col">كبار الشخصيات</th>
-                                  <th scope="col">الأسم الثاني</th>
-                                  <th scope="col">الأسم الأول</th>
+                                <tr >
+                                  <th scope="col" class="">الحالة</th>
+                                  <th scope="col">تنتهي عند</th>
+                                  <th scope="col">تبدأ في</th>
+                                  <th scope="col">رقم البطاقه</th>
+                                  <th scope="col">إسم الزائر</th>
+                                  <th scope="col">إسم المالك</th>
                                   <th scope="col">#</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr style="vertical-align: middle; cursor: pointer;">
-                                  <td class="text-success text-end"><i class="fa-solid fa-check me-1"></i>مفعل</td>
-                                  <td>01006438385</td>
-                                  <td class="text-primary"><i class="fa-brands fa-gripfire"></i></td>
-                                  <td>الدحيح</td>
-                                  <td>سيد</td>
-                                  <th scope="row">1</th>
-                                </tr>
-                                <tr style="vertical-align: middle; cursor: pointer;">
-                                  <td class="text-danger text-end"><i class="fa-solid fa-xmark me-1"></i>غير مفعل</td>
-                                  <td>01006438385</td>
-                                  <td class="text-secondary"><i class="fa-solid fa-heart-pulse"></i></td>
-                                  <td>احمد</td>
-                                  <td>خالد</td>
-                                  <th scope="row">2</th>
+                                <tr *ngFor="let reservation of reservations | paginate: { id: 'usersPagination',
+                                itemsPerPage: 5,
+                                currentPage: pReservation,
+                                totalItems: totalReservation }; let i= index" style="vertical-align: middle; cursor: pointer;">
+                                  <td *ngIf="reservation.approve == 0">
+                                    <span class="text-secondary">معلق</span>
+                                  </td>
+                                  <td *ngIf="reservation.approve == 1">
+                                    <span class="text-success">مقبول</span>
+                                  </td>
+                                  <td *ngIf="reservation.approve == 2">
+                                    <span class="text-danger">مرفوض</span>
+                                  </td>
+                                  <td class="">{{ reservation.endDate | date:"yyyy/MM/dd" }}</td>
+                                  <td>{{ reservation.startDate | date:"yyyy/MM/dd" }}</td>
+                                  <td >{{ reservation.sSN }}</td>
+                                  <td class="text-primary">{{ reservation.visitorName }}</td>
+                                  <td>{{ reservation.ownerName }}</td>
+                                  <th scope="row">{{ i+1 }}</th>
                                 </tr>
                             </tbody>
                         </table>

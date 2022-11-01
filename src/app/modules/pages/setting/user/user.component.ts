@@ -109,8 +109,6 @@ export class UserComponent implements OnInit {
         this.users = users
       },
       error: (error) => {
-        console.log(error);
-
         switch (error.status) {
           case 500:
             this._ToastrService.error(error.error.errors as string);

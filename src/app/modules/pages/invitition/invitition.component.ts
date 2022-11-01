@@ -12,9 +12,10 @@ import { Reservation } from './../../../shared/models/reservation';
 export class InvititionComponent implements OnInit {
 
   reservations: Reservation[] = []
-  pReversation: number = 1;
+  pReversation: number = 1
   totalReversation: any = 0
   reservation: Reservation
+  searchTxt: string = ''
 
   constructor(private _ReservationService: ReservationService, private _ToastrService: ToastrService) { }
 
@@ -37,6 +38,21 @@ export class InvititionComponent implements OnInit {
       },
       error: (error) => {
         this._ToastrService.warning('😭 حدث خطأ')
+        switch (error.status) {
+          case 500:
+            this._ToastrService.error(error.error.errors as string);
+            break
+          case 401:
+            for (const [key, value] of Object.entries(error.error.errors)) {
+              this._ToastrService.error(value as string);
+            }
+            break
+          case 400:
+            for (const [key, value] of Object.entries(error.error.errors)) {
+              this._ToastrService.error(value as string);
+            }
+            break
+        }
       }
     })
   }
@@ -49,6 +65,22 @@ export class InvititionComponent implements OnInit {
       },
       error: (error) => {
         this._ToastrService.error('😥 حدث خطأ')
+
+      }
+    })
+  }
+
+  onSearch(event: any){
+    this.searchTxt = event.target.value
+    console.log(event.target.value);
+
+  }
+
+  // search
+  searchInreservation(){
+    this._ReservationService.searchInreservation(this.searchTxt).subscribe({
+      next: (search) => {
+        this.reservations = search
       }
     })
   }

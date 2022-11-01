@@ -49,7 +49,7 @@ export class AccountComponent implements OnInit {
         this.rejectedOwners = count.rejectedOwners
       },
       error: (error) => {
-        this._ToastrService.error('😭 حدث خطأ')
+        this._ToastrService.warning('😭 حدث خطأ')
       }
     })
   }

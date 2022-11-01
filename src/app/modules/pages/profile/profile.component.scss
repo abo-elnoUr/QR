@@ -36,3 +36,23 @@ body {
   border-radius: 100%;
   border: 5px solid #fff;
 }
+
+.tab-content .tab-pane .edit{
+  position: relative;
+}
+
+.tab-content .tab-pane .edit span{
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 10px;
+  height: 10px;
+  font-size: 22px;
+  cursor: pointer;
+  color: #1da1f2;
+  transition: .3s all linear;
+}
+
+.tab-content .tab-pane .edit span:hover{
+  transform: scale(1.1);
+}

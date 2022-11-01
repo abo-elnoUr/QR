@@ -19,12 +19,17 @@ export class ReservationService {
 
   // get all reservation
   getReservations(): Observable<Reservation[]> {
-    return this._HttpClient.get<Reservation[]>(this.apiUrl + 'Invitation/GetAll')
+    return this._HttpClient.get<Reservation[]>(this.apiUrl + 'Invitation/GetAllInvitationDaily')
   }
 
   // get reservation by id
   getReservation(id: number): Observable<Reservation> {
-    return this._HttpClient.get<Reservation>(this.apiUrl + `Invitation/${id}`)
+    return this._HttpClient.get<Reservation>(this.apiUrl + `Invitation/GetInvitationById/${id}`)
+  }
+
+  // search in reservation
+  searchInreservation(search: any): Observable<Reservation[]>{
+    return this._HttpClient.post<Reservation[]>(this.apiUrl + 'Invitation/SearchInvitation', {"searchText":search})
   }
 
 }

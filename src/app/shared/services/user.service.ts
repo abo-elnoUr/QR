@@ -75,4 +75,12 @@ export class UserService {
     return this._HttpClient.delete<Unit>(this.apiUrl + `Unit/Delete/${id}`)
   }
 
+  // ************************************ Dashboard ************************************
+
+  // get all count
+  getDashboardCount(): Observable<any>{
+    return this._HttpClient.get(this.apiUrl + 'Dashboard/GetCount')
+  }
+
+
 }
