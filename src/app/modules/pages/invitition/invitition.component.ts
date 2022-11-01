@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as signalR from '@microsoft/signalr';
 
 import { ReservationService } from 'src/app/shared/services/reservation.service';
 import { ToastrService } from 'ngx-toastr';
@@ -22,6 +23,21 @@ export class InvititionComponent implements OnInit {
   ngOnInit(): void {
     // call functions
     this.getReservations()
+
+    const connection = new signalR.HubConnectionBuilder()
+      .configureLogging(signalR.LogLevel.Information)
+      .withUrl('/signalrServer').build();
+
+    connection.start().then(() => {
+      console.log('%cSignalR connected 😀', "color: gold; font-size: 22px; margin-bottom: 10px ");
+    }).catch((error) => {
+      return console.error(error.toString())
+    });
+
+    connection.on('LoadInvitations', () => {
+      this.getReservations()
+    })
+
   }
 
   // pagination
@@ -70,14 +86,14 @@ export class InvititionComponent implements OnInit {
     })
   }
 
-  onSearch(event: any){
+  onSearch(event: any) {
     this.searchTxt = event.target.value
     console.log(event.target.value);
 
   }
 
   // search
-  searchInreservation(){
+  searchInreservation() {
     this._ReservationService.searchInreservation(this.searchTxt).subscribe({
       next: (search) => {
         this.reservations = search

@@ -9,6 +9,8 @@ export class SideBarComponent implements OnInit {
 
   constructor() { }
 
+  isAdmin = localStorage.getItem('qrRole')
+
   ngOnInit(): void {
   }
 

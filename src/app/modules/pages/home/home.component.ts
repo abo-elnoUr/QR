@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   pReservation: number = 1;
   totalReservation: any = 0
 
-  constructor(private  _ReservationService: ReservationService, private _UserService: UserService, private _ToastrService: ToastrService, private _DatePipe: DatePipe) { }
+  constructor(private _ReservationService: ReservationService, private _UserService: UserService, private _ToastrService: ToastrService, private _DatePipe: DatePipe) { }
 
   userName = localStorage.getItem('qrLoginUser')
   userId = localStorage.getItem('qrIdUser')
@@ -37,37 +37,37 @@ export class HomeComponent implements OnInit {
   }
 
   // get reservation
-  getReservation(){
+  getReservation() {
     this._ReservationService.getReservations().subscribe({
       next: (reservation) => {
         this.reservations = reservation
       },
       error: (error) => {
-        this._ToastrService.warning('🤪 حدث خطأ')
+        // this._ToastrService.warning('🤪 حدث خطأ')
       }
     })
   }
 
   // get all users
-  getUser(){
+  getUser() {
     this._UserService.getUser(this.userId).subscribe({
       next: (user) => {
         this.user = user
       },
       error: (error) => {
-        this._ToastrService.warning('🤪 حدث خطأ')
+        // this._ToastrService.warning('🤪 حدث خطأ')
       }
     })
   }
 
   // get dashboard count
-  getDashboardCount(){
+  getDashboardCount() {
     this._UserService.getDashboardCount().subscribe({
       next: (counts) => {
         this.counts = counts
       },
       error: (error) => {
-        this._ToastrService.warning('🤪 حدث خطأ')
+        // this._ToastrService.warning('🤪 حدث خطأ')
       }
     })
   }

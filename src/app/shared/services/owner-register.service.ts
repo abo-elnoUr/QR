@@ -10,8 +10,9 @@ import { environment } from 'src/environments/environment';
 })
 export class OwnerRegisterService {
 
-  apiUrl = 'http://192.168.1.254:5214/api/'
+  /// apiUrl = environment.algoritmUrl
   // apiUrl = environment.smarterUrl
+  apiUrl = environment.localUrl
 
 
   constructor(private _HttpClient: HttpClient) { }

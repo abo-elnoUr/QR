@@ -1,24 +1,26 @@
 <div class="container-mine">
-    <div class="top"></div>
-    <div class="bottom"></div>
-    <div class="center text-end">
-        <h3 class="mb-3"> 😎 سجل دخول </h3>
+    <div class="center text-end shadow rounded text-light  login-animation">
+        <h3 class="mb-3"> سجل دخول </h3>
+        <div class="d-flex justify-content-center align-items-center">
+            <img src="/assets/images/main/slack.png" width="70">
+        </div>
         <form [formGroup]="loginForm">
-            <div class="form-group">
+            <div class="form-group mb-2">
                 <label>الإيميل</label>
                 <app-input [control]="loginForm.get('email')" [id]="'login-email'" [class]="'form-control text-end'" [style]="'width: 300px'" [type]="'email'" [placeholder]="'ادخل الايميل'">
                 </app-input>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-2">
                 <label>الرقم السري</label>
                 <app-input [control]="loginForm.get('password')" [id]="'login-password'" [class]="'form-control my-2 text-end'" [type]="'password'" [placeholder]="'********'">
                 </app-input>
             </div>
-            <div class="text-end">
-                <a routerLink="" data-bs-toggle="modal" data-bs-target="#forgetPassword">هل نسيت الرقم السري</a>
+            <div class="text-end ">
+                <a routerLink="" class="text-light" data-bs-toggle="modal" data-bs-target="#forgetPassword">هل نسيت
+                    الرقم السري</a>
             </div>
             <div class="mx-auto text-center">
-                <button class="btn btn-outline-primary mt-3" [disabled]="loginForm.invalid"  (click)="onLogin()"><i
+                <button class="btn btn-outline-light mt-3" [disabled]="loginForm.invalid" (click)="onLogin()"><i
                         class="fa-solid fa-arrow-right-to-bracket me-1"></i>تسجيل الدخول</button>
             </div>
         </form>
@@ -44,11 +46,11 @@
                         <app-input [control]="forgetForm.get('email')" [id]="'forget-email'" [class]="'form-control text-end'" [type]="'email'" [placeholder]="'ادخل الايميل'">
                         </app-input>
                     </div>
-                    <div class="wait" >
+                    <!-- <div class="wait">
                         <p class="text-muted pt-2">
                             يرجي الإنتظار {{ timer }} قبل طلب كود جديد
                         </p>
-                    </div>
+                    </div> -->
                     <div class="mx-auto text-center">
                         <button class="btn btn-outline-primary mt-3" data-bs-dismiss="modal" [disabled]="forgetForm.invalid" (click)="forgetPassword()"><i
                                 class="fa-regular fa-paper-plane me-1"></i>إرسال</button>

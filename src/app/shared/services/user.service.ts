@@ -12,8 +12,9 @@ import { environment } from 'src/environments/environment';
 })
 export class UserService {
 
-  apiUrl = 'http://192.168.1.254:5214/api/'
+  // apiUrl = environment.algoritmUrl
   // apiUrl = environment.smarterUrl
+  apiUrl = environment.localUrl
 
 
   constructor(private _HttpClient: HttpClient) { }
@@ -36,7 +37,7 @@ export class UserService {
   }
 
   // update user
-  updateUser(user: User, id: string): Observable<User>{
+  updateUser(user: User, id: string): Observable<User> {
     return this._HttpClient.put<User>(this.apiUrl + `Auth/UpdateUser/${id}`, user)
   }
 
@@ -78,7 +79,7 @@ export class UserService {
   // ************************************ Dashboard ************************************
 
   // get all count
-  getDashboardCount(): Observable<any>{
+  getDashboardCount(): Observable<any> {
     return this._HttpClient.get(this.apiUrl + 'Dashboard/GetCount')
   }
 

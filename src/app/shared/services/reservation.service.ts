@@ -10,8 +10,9 @@ import { environment } from 'src/environments/environment';
 })
 export class ReservationService {
 
-  apiUrl = 'http://192.168.1.254:5214/api/'
+  // apiUrl = environment.algoritmUrl
   // apiUrl = environment.smarterUrl
+  apiUrl = environment.localUrl
 
   constructor(private _HttpClient: HttpClient) { }
 
@@ -28,8 +29,8 @@ export class ReservationService {
   }
 
   // search in reservation
-  searchInreservation(search: any): Observable<Reservation[]>{
-    return this._HttpClient.post<Reservation[]>(this.apiUrl + 'Invitation/SearchInvitation', {"searchText":search})
+  searchInreservation(search: any): Observable<Reservation[]> {
+    return this._HttpClient.post<Reservation[]>(this.apiUrl + 'Invitation/SearchInvitation', { "searchText": search })
   }
 
 }
