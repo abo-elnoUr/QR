@@ -12,9 +12,9 @@ import { environment } from 'src/environments/environment';
 })
 export class UserService {
 
-  // apiUrl = environment.algoritmUrl
+  apiUrl = environment.algoritmUrl
   // apiUrl = environment.smarterUrl
-  apiUrl = environment.localUrl
+  // apiUrl = environment.localUrl
 
 
   constructor(private _HttpClient: HttpClient) { }

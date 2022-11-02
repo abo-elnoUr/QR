@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import * as signalR from '@microsoft/signalr';
 
+
 import { ReservationService } from 'src/app/shared/services/reservation.service';
 import { ToastrService } from 'ngx-toastr';
 import { Reservation } from './../../../shared/models/reservation';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-invitition',
@@ -18,25 +20,29 @@ export class InvititionComponent implements OnInit {
   reservation: Reservation
   searchTxt: string = ''
 
+  serverUrl = environment.signalRUrl
+
   constructor(private _ReservationService: ReservationService, private _ToastrService: ToastrService) { }
 
   ngOnInit(): void {
     // call functions
     this.getReservations()
 
+    // signalR connection
+
     const connection = new signalR.HubConnectionBuilder()
       .configureLogging(signalR.LogLevel.Information)
-      .withUrl('/signalrServer').build();
+      .withUrl(this.serverUrl + 'signalrServer').build();
+
+      connection.on('LoadInvitations', () => {
+        this.getReservations()
+      })
 
     connection.start().then(() => {
       console.log('%cSignalR connected 😀', "color: gold; font-size: 22px; margin-bottom: 10px ");
     }).catch((error) => {
       return console.error(error.toString())
     });
-
-    connection.on('LoadInvitations', () => {
-      this.getReservations()
-    })
 
   }
 
